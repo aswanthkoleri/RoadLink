@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/',include('account.urls')),
     path('driver/',include('driver.urls')),
+    path('',include('home.urls')),
 ]
