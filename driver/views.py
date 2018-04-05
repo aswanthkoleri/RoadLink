@@ -3,20 +3,22 @@ from django.http import HttpResponse
 from django.http import Http404
 from django.template import loader
 from .models import Driver
+from .forms import DriverForm
 # Create your views here.
 
 def index(request):
-    return render(request,'driver/index.html')
+    form=DriverForm()
+    return render(request,'driver/index.html',{'form':form})
 
 def driver(request):
-    driver=Driver(
-        firstName=request.POST['firstName'],
-        lastName=request.POST['lastName'],
-        nationalId=request.POST['nationalId'],
-        address=request.POST['nationalId'],
-        email=request.POST['email'],
-        phoneNumber=request.POST['phoneNumber'],
-        licenseCategory=request.POST['licenseCategory'],
-    )
-    driver.save()
-    return render(request,'driver/index.html')
+    if request.POST:
+        form=DriverForm(request.POST)
+        if form.is_valid():
+            form.save()
+            success_message='Driver registered'
+            form=DriverForm()
+            return render(request,'driver/index.html',{'form':form,'success' : success_message})
+    else:
+        form=DriverForm()
+        error_message='Something went wrong error'
+        return render(request,'driver/index.html',{ 'form' : form ,'error':error_message})
