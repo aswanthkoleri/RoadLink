@@ -1,0 +1,13 @@
+body {
+    background-image: url(road2.gif);
+    background-size: 100% 150%;
+ 
+}
+
+.card {
+    background: rgba(231, 235, 236, 0.7);
+}
+
+.card .card-header{
+    background: rgba(231, 235, 236, 0.7);
+}

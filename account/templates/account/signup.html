@@ -1,3 +1,4 @@
+{% load staticfiles %}
 {% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 <style>
     .card {
         margin-top : 20px;
@@ -17,7 +18,7 @@
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/account/login">
     Road Link
     </a>
     <a href="/account/login" class="btn btn-primary">Login</a>
