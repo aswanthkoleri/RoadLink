@@ -32,6 +32,6 @@ pip install -r requirements.txt
 ```
 python manage.py runserver
 ```
-- Goto the address [localhost:8000](http://localhost:8000/account/login)
+- Goto the address [localhost:8000](http://localhost:8000/)
 
 The app is up and running. Thanks :smile:
