@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account',
-    'driver',
-    'home',
+    'account.apps.AccountConfig',
+    'driver.apps.DriverConfig',
+    'home.apps.HomeConfig',
+    'booking.apps.BookingConfig',
+    'vehicle.apps.VehicleConfig',
     'crispy_forms',
 ]
 
