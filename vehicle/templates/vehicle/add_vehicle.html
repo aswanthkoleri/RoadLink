@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Booking</title>
+    <title>Add New Vehicle</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -29,6 +29,7 @@
 <body>
 {% if user.is_authenticated %}
     <div id="wrapper">
+
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
@@ -85,10 +86,10 @@
                             {% endif %}
                         <div class="card">
                             <div class="card-header">
-                                <h2>Book</h2>
+                                <h2>Add New Vehicle</h2>
                             </div>
                             <div class="card-body">
-                            <form action="/vehicle/addVehicle" method="POST">
+                            <form action="/vehicle/create_vehicle" method="POST">
                             {% csrf_token %}
                             {{ form | crispy }}
                             <div class="form-group row">

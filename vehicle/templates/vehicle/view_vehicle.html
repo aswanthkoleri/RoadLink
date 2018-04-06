@@ -1,0 +1,167 @@
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>View Vehicle</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+
+</head>
+<style>
+.nav {
+    margin-bottom: 20px;
+}
+</style>
+<body>
+{% if user.is_authenticated %}
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                       Road Link
+                    </a>
+                </li>
+                <li>
+                    <a href="/account/profile">Dashboard</a>
+                </li>
+                <li>
+                    <a href="/driver">View all drivers</a>
+                </li>
+                <li>
+                    <a href="#">Add driver</a>
+                </li>
+                <li>
+                    <a href="#">View all vehicles</a>
+                </li>
+                <li>
+                    <a href="#">View all trips</a>
+                </li>
+                <li>
+                    <a href="#">Add vehicle</a>
+                </li>
+                <li>
+                    <a href="#">View report</a>
+                </li>
+                <li>
+                    <form action="/account/logout" method="POST">
+                    {%csrf_token%}
+                    <input type="submit" class="btn btn-primary" value="Logout">
+                </form>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row nav">
+                    <div class="col-md-2">
+                        <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                            {%if success %}
+                            <div class="alert alert-success" role="alert">
+                                    {{ success }}
+                                  </div>
+                            {% endif %}
+                            <h2>Vehicles</h2>
+                            <table class="table" id="vehicle_table">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Owner</th>
+                                    <th scope="col">Cost per km</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Registration plate</th>
+                                    <th scope="col">Vehicle status</th>
+                                    <th scope="col">Insurance status</th>
+                                    <th scope="col">No.of km travelled</th>
+                                    <th scope="col">Fuel type</th>
+                                    <th scope="col">Mileage</th>
+                                    <th scope="col">Vehicle type</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                  </tr>
+                                </thead>
+                                {% for i in list %}
+                                <tbody>
+                                  <tr>
+                                    <th data-label="#" scope="row">{{ i }}</th>
+                                    <td data-label="owner">{{ i.owner}}</td>
+                                    <td data-label="cost_per_km">{{ i.cost_per_km }}</td>
+                                    <td data-label="price">{{ i.price }}</td>
+                                    <td data-label="registration_plate">{{ i.registration_plate }}</td>
+                                    <td data-label="vehicle_status">{{ i.vehicle_status }}</td>
+                                    <td data-label="insurance_status">{{ i.insurance_status }}</td>
+                                    <td data-label="no_of_km_travelled">{{ i.no_of_km_travelled }}</td>
+                                    <td data-label="fuel_type">{{ i.fuel_type }}</td>
+                                    <td data-label="mileage">{{ i.mileage }}</td>
+                                    <td data-label="vehicle_type">{{ i.vehicle_type }}</td>
+                        
+                                    <td data-label="view_trip">
+                                        <button type="button" class="btn btn-primary">View Trip</button>
+                                    </td>
+                                    <td data-label="edit">
+                                        <button type="button" class="btn btn-secondary">Edit</button>
+                                    </td>
+                                    <td data-label="delete">
+                                        <button type="button" class="btn btn-danger">Delete</button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+{% else %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-3">You are not logged in</h1>
+    </div>
+</div>
+{% endif %}
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>
+
