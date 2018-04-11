@@ -10,6 +10,7 @@ class Book(models.Model):
     source_latitude=models.DecimalField(max_digits=20,default=0,decimal_places=2)
     source_longitude=models.DecimalField(max_digits=20,default=0,decimal_places=2)
     destination_latitude=models.DecimalField(max_digits=20,default=0,decimal_places=2)
+    distance=models.DecimalField(max_digits=20,default=0,decimal_places=2)
     destination_longitude=models.DecimalField(max_digits=20,default=0,decimal_places=2)
     bookingDate=models.DateTimeField(default=timezone.now)
     startDate=models.DateTimeField("Start date ")

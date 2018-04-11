@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'vehicle.apps.VehicleConfig',
     'crispy_forms',
     'requests',
+    'geopy',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
