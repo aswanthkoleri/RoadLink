@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'booking.apps.BookingConfig',
     'vehicle.apps.VehicleConfig',
     'crispy_forms',
+    'requests',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

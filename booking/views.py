@@ -4,6 +4,7 @@ from django.http import Http404
 from django.template import loader
 from .models import Book
 from .forms import BookForm
+import requests
 # Create your views here.
 
 def index(request):
@@ -16,6 +17,20 @@ def book(request):
         if form.is_valid():
             instance=form.save(commit=False)
             instance.allottedUser=request.user
+            url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' +instance.source+ ',+CA&key=AIzaSyBKmBYERZyz9Cj7-F9bT7WMWVuSHiaX9kU'
+            r = requests.get(url)
+            results = r.json()
+            source_longitude = results["results"][0]["geometry"]["location"]["lat"]
+            source_latitude = results["results"][0]["geometry"]["location"]["lng"]
+            instance.source_longitude=source_longitude
+            instance.source_latitude=source_latitude
+            url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' +instance.destination+ ',+CA&key=AIzaSyBKmBYERZyz9Cj7-F9bT7WMWVuSHiaX9kU'
+            r = requests.get(url)
+            results = r.json()
+            destination_longitude = results["results"][0]["geometry"]["location"]["lat"]
+            destination_latitude = results["results"][0]["geometry"]["location"]["lng"]
+            instance.destination_longitude=destination_longitude
+            instance.destination_latitude=destination_latitude
             instance.save()
             success_message='Booking done'
             form=BookForm()
