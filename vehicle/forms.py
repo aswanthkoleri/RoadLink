@@ -1,8 +1,8 @@
 from django import forms
-from . models import Vehicle
+from .models import Vehicle
 
 class VehicleForm(forms.ModelForm):
     class Meta:
-        model = Vehicle
+        model=Vehicle
         fields = ('owner','cost_per_km','price','registration_plate','insurance_status',
-        'no_of_km_travelled','fuel_type','mileage','vehicle_type')
+        'no_of_km_travelled','fuel_type','mileage','vehicle_type',)

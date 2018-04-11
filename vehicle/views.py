@@ -8,21 +8,17 @@ from .forms import VehicleForm
 
 def index(request):
     form=VehicleForm()
-    return render(request,'vehicle/add_vehicle.html',{'form':form})
+    return render(request,'vehicle/index.html',{'form':form})
 
-def create_vehicle(request):
+def addVehicle(request):
     if request.POST:
         form=VehicleForm(request.POST)
         if form.is_valid():
             form.save()
             success_message='Adding done'
             form=VehicleForm()
-            return render(request,'vehicle/add_vehicle.html.html',{'form':form,'success' : success_message})
+            return render(request,'vehicle/index.html',{'form':form,'success' : success_message})
     else:
         form=VehicleForm()
         error_message='Something went wrong error'
-        return render(request,'vehicle/add_vehicle.html.html',{ 'form' : form ,'error':error_message})
-
-def viewall_vehicle(request):
-    list = Vehicle.objects.all()
-    return render(request,'vehicle/view_vehicle.html',{'list':list})        
+        return render(request,'vehicle/index.html',{ 'form' : form ,'error':error_message})

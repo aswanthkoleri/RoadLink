@@ -89,7 +89,7 @@
                                 <h2>Add New Vehicle</h2>
                             </div>
                             <div class="card-body">
-                            <form action="/vehicle/create_vehicle" method="POST">
+                            <form action="/vehicle/addVehicle" method="POST">
                             {% csrf_token %}
                             {{ form | crispy }}
                             <div class="form-group row">
