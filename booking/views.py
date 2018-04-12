@@ -16,17 +16,22 @@ def book(request):
     if request.POST:
         form=BookForm(request.POST)
         if form.is_valid():
+            print('success')
             instance=form.save(commit=False)
             instance.allottedUser=request.user
             url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' +instance.source+ ',+CA&key=AIzaSyBKmBYERZyz9Cj7-F9bT7WMWVuSHiaX9kU'
+            print(url)
             r = requests.get(url)
             results = r.json()
+            print(results)
             source_latitude = results["results"][0]["geometry"]["location"]["lat"]
             source_longitude = results["results"][0]["geometry"]["location"]["lng"]
             instance.source_longitude=source_longitude
             instance.source_latitude=source_latitude
             url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' +instance.destination+ ',+CA&key=AIzaSyBKmBYERZyz9Cj7-F9bT7WMWVuSHiaX9kU'
             r = requests.get(url)
+            print(r)
+            print(url)
             results = r.json()
             destination_latitude = results["results"][0]["geometry"]["location"]["lat"]
             destination_longitude = results["results"][0]["geometry"]["location"]["lng"]
@@ -37,9 +42,9 @@ def book(request):
             distance=geopy.distance.vincenty(coords_1, coords_2).km
             instance.distance=distance
             instance.save()
+            print('success')
             success_message='Booking done'
-            form=BookForm()
-            return render(request,'booking/index.html',{'form':form,'success' : success_message})
+            return render(request,'booking/success.html',{'details': instance ,'success' : success_message})
     else:
         form=BookForm()
         error_message='Something went wrong error'
