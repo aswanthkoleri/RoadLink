@@ -1,0 +1,44 @@
+
+<div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                   Road Link
+                </a>
+            </li>
+            <li>
+                <a href="/account/profile">Dashboard</a>
+            </li>
+            <li>
+                <a href="/driver">View all drivers</a>
+            </li>
+            <li>
+                <a href="/driver">Add driver</a>
+            </li>
+            <li>
+                <a href="/vehicle/vehicles">View your vehicles</a>
+            </li>
+            <li>
+                <a href="#">View all trips</a>
+            </li>
+            <li>
+                <a href="/vehicle/addVehicle">Add vehicle</a>
+            </li>
+            <li>
+                <a href="/repair">Repair</a>
+            </li>
+            <li>
+                <a href="/repair/issues">Repair List</a>
+            </li>
+            <li>
+                <a href="#">View report</a>
+            </li>
+            <li>
+                <form action="/account/logout" method="POST">
+                {%csrf_token%}
+                <input type="submit" class="btn btn-primary" value="Logout">
+            </form>
+            </li>
+        </ul>
+    </div>
+    
