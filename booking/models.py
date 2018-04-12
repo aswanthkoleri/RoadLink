@@ -28,5 +28,6 @@ class Book(models.Model):
     discountId=models.CharField(max_length=100)
     allottedUser=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
     vehicle=models.ForeignKey(Vehicle,on_delete=models.CASCADE)
+    cost=models.FloatField()
     def __str__(self):
         return 'source : '+self.source

@@ -21,7 +21,7 @@ class Vehicle(models.Model):
         ('D','Diesel'),
     )
     owner = models.ForeignKey(User,default=None,on_delete=models.CASCADE)
-    cost_per_km = models.DecimalField(max_digits=20,default=0,decimal_places=3)
+    cost_per_km = models.DecimalField(max_digits=20,default=0,decimal_places=2)
     price = models.DecimalField(max_digits=20,default="0",decimal_places=3)
     registration_plate = models.CharField(max_length=200,default='')
     vehicle_status = models.CharField(max_length=2,default='NB',choices=VEHICLE_STATUS_CHOICES)

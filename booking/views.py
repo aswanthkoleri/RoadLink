@@ -41,6 +41,9 @@ def book(request):
             coords_2 = (destination_latitude, destination_longitude)
             distance=geopy.distance.vincenty(coords_1, coords_2).km
             instance.distance=distance
+            print(instance.distance)
+            print(instance.vehicle.cost_per_km)
+            instance.cost=float(instance.vehicle.cost_per_km)*float(instance.distance)
             instance.save()
             print('success')
             success_message='Booking done'
