@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Vehicle(models.Model):
@@ -15,14 +16,18 @@ class Vehicle(models.Model):
         ('T','Truck'),
         ('C','Construction'),
     )
-    owner = models.CharField(max_length=200,default='')
+    FUEL_TYPE_CHOICES = (
+        ('P','Petrol'),
+        ('D','Diesel'),
+    )
+    owner = models.ForeignKey(User,default=None,on_delete=models.CASCADE)
     cost_per_km = models.DecimalField(max_digits=20,default=0,decimal_places=3)
     price = models.DecimalField(max_digits=20,default="0",decimal_places=3)
     registration_plate = models.CharField(max_length=200,default='')
     vehicle_status = models.CharField(max_length=2,default='NB',choices=VEHICLE_STATUS_CHOICES)
     insurance_status = models.CharField(max_length=2,default='NU',choices=INSURANCE_STATUS_CHOICES)
     no_of_km_travelled = models.DecimalField(max_digits=20,default=0,decimal_places=0)
-    fuel_type = models.CharField(max_length=200,default='petrol')
+    fuel_type = models.CharField(max_length=1,default='P',choices=FUEL_TYPE_CHOICES)
     mileage = models.DecimalField(max_digits=20,default=0,decimal_places=0)
     vehicle_type = models.CharField(max_length=1,default='P',choices=VEHICLE_TYPE_CHOICES)
 

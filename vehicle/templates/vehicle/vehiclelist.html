@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Add driver</title>
+    <title>Vehicles</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -29,7 +29,7 @@
 <body>
 {% if user.is_authenticated %}
     <div id="wrapper">
-        <!-- Sidebar -->
+
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
@@ -92,16 +92,41 @@
                             {% endif %}
                         <div class="card">
                             <div class="card-header">
-                                <h2>Add driver</h2>
+                                <h2>Issues</h2>
                             </div>
                             <div class="card-body">
-                            <form action="/driver/addDriver" method="POST">
-                            {% csrf_token %}
-                            {{ form | crispy }}
-                            <div class="form-group row">
-                            <input type="submit" name="submit" class="btn btn-primary" id="submit"/>
-                            </div>
-                            </form>
+                                <table class="table">
+                                  <thead>
+                                    <tr>
+                                      <!-- <th scope="col">#</th> -->
+                                      <th scope="col">Registration Plate</th>
+                                      <th scope="col">Price</th>
+                                      <th scope="col">Cost Per KM</th>
+                                      <th scope="col">No Of KM Travelled</th>
+                                      <th scope="col">Fuel Type</th>
+                                      <th scope="col">Mileage</th>
+                                      <th scope="col">Vehicle Type</th>
+                                      <th scope="col">Delete</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {% for vehicle in vehiclesList %}
+                                    <tr>
+                                      <!-- <th scope="row"></th> -->
+                                      <td>{{vehicle.registration_plate}}</td>
+                                      <td>{{vehicle.price}}</td>
+                                      <td>{{vehicle.cost_per_km}}</td>
+                                      <td>{{vehicle.no_of_km_travelled}}</td>
+                                      <td>{{vehicle.fuel_type}}</td>
+                                      <td>{{vehicle.mileage}}</td>
+                                      <td>{{vehicle.vehicle_type}}</td>
+                                      <td>
+                                        <a href="/vehicle/delete/{{vehicle.id}}"><input type="button" value="Delete" name="delete" class="btn btn-primary" id="submit"/></a>
+                                      </td>
+                                    </tr>
+                                    {% endfor %}
+                                  </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

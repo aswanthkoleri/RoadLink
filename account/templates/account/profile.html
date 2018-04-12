@@ -30,6 +30,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
+        <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
@@ -41,13 +42,13 @@
                     <a href="/account/profile">Dashboard</a>
                 </li>
                 <li>
-                    <a href="/driver/viewDriver">View all drivers</a>
+                    <a href="/driver">View all drivers</a>
                 </li>
                 <li>
                     <a href="/driver">Add driver</a>
                 </li>
                 <li>
-                    <a href="#">View all vehicles</a>
+                    <a href="/vehicle/vehicles">View your vehicles</a>
                 </li>
                 <li>
                     <a href="#">View all trips</a>
@@ -59,10 +60,16 @@
                     <a href="/repair">Repair</a>
                 </li>
                 <li>
+                    <a href="/repair/issues">Repair List</a>
+                </li>
+                <li>
                     <a href="#">View report</a>
                 </li>
                 <li>
-                    <a href="#">Logout</a>
+                    <form action="/account/logout" method="POST">
+                    {%csrf_token%}
+                    <input type="submit" class="btn btn-primary" value="Logout">
+                </form>
                 </li>
             </ul>
         </div>
