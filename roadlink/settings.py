@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'booking.apps.BookingConfig',
     'vehicle.apps.VehicleConfig',
+    'repair.apps.RepairConfig',
     'crispy_forms',
     'requests',
     'geopy',

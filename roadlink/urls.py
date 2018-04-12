@@ -22,6 +22,7 @@ urlpatterns = [
     path('account/',include('account.urls')),
     path('driver/',include('driver.urls')),
     path('booking/',include('booking.urls')),
+    path('repair/',include('repair.urls')),
     path('vehicle/',include('vehicle.urls')),
     path('',include('home.urls')),
 ]
