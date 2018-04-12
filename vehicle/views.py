@@ -14,7 +14,9 @@ def addVehicle(request):
     if request.POST:
         form=VehicleForm(request.POST)
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.owner=request.user
+            instance.save()
             success_message='Adding done'
             form=VehicleForm()
             return render(request,'vehicle/index.html',{'form':form,'success' : success_message})

@@ -4,4 +4,6 @@ app_name='driver'
 urlpatterns = [
     path('', views.index,name='index'),
     path('addDriver',views.driver,name='addDriver'),
+    path('drivers',views.drivers,name='drivers'),
+    path('delete/<int:id>',views.delete,name='delete'),
 ]

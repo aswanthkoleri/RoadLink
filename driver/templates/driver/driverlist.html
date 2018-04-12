@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Add New Vehicle</title>
+    <title>Drivers</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -92,16 +92,46 @@
                             {% endif %}
                         <div class="card">
                             <div class="card-header">
-                                <h2>Add New Vehicle</h2>
+                                <h2>Drivers</h2>
                             </div>
                             <div class="card-body">
-                            <form action="/vehicle/addVehicle" method="POST">
-                            {% csrf_token %}
-                            {{ form | crispy }}
-                            <div class="form-group row">
-                            <input type="submit" name="submit" class="btn btn-primary" id="submit"/>
-                            </div>
-                            </form>
+                                <table class="table">
+                                  <thead>
+                                    <tr>
+                                      <!-- <th scope="col">#</th> -->
+                                      <th scope="col">First Name</th>
+                                      <th scope="col">Last Name</th>
+                                      <th scope="col">National ID</th>
+                                      <th scope="col">Email</th>
+                                      <th scope="col">Contact</th>
+                                      <th scope="col">Liscense Category</th>
+                                      <th scope="col">Address</th>
+                                      {% if user.is_superuser %}
+                                      <th scope="col">Delete</th>
+                                      {% endif %}
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {% for driver in drivers %}
+                                    <tr>
+                                      <!-- <th scope="row"></th> -->
+                                      <td>{{driver.firstName}}</td>
+                                      <td>{{driver.lastName}}</td>
+                                      <td>{{driver.nationalId}}</td>
+                                      <td>{{driver.email}}</td>
+                                      <td>{{driver.phoneNumber}}</td>
+                                      <td>{{driver.liscenseCategory}}</td>
+                                      <td>{{driver.address}}</td>
+                                      {% if user.is_superuser %}
+                                      <td>
+                                        <a href="/driver/delete/{{driver.id}}"><input type="button" value="Delete" name="delete" class="btn btn-primary" id="submit"/></a>
+                                      </td>
+                                      {% endif %}
+                                      
+                                    </tr>
+                                    {% endfor %}
+                                  </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

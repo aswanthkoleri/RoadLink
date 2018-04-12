@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Add New Vehicle</title>
+    <title>Vehicles</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -92,16 +92,55 @@
                             {% endif %}
                         <div class="card">
                             <div class="card-header">
-                                <h2>Add New Vehicle</h2>
+                                <h2>Your Bookings</h2>
                             </div>
                             <div class="card-body">
-                            <form action="/vehicle/addVehicle" method="POST">
-                            {% csrf_token %}
-                            {{ form | crispy }}
-                            <div class="form-group row">
-                            <input type="submit" name="submit" class="btn btn-primary" id="submit"/>
-                            </div>
-                            </form>
+                                <table class="table">
+                                  <thead>
+                                    <tr>
+                                      <!-- <th scope="col">#</th> -->
+                                      {% if user.is_superuser %}
+                                        <th scope="col">Username</th>
+                                      {% endif %}
+                                      <th scope="col">Registration Number</th>
+                                      <th scope="col">Discount ID</th>
+                                      <th scope="col">Status</th>
+                                      <th scope="col">Start Date</th>
+                                      <th scope="col">End Date</th>
+                                      <th scope="col">Source</th>
+                                      <th scope="col">Destination</th>
+                                      <th scope="col">Distance</th>
+                                      <th scope="col">Delete</th>
+                                      {% if user.is_superuser %}
+                                        <th scope="col">Change Status</th>
+                                      {% endif %}
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {% for item in bookings %}
+                                    <tr>
+                                      <!-- <th scope="row"></th> -->
+                                      {% if user.is_superuser %}
+                                        <td>{{item.allottedUser.username}}</td>
+                                      {% endif %}
+                                      <td>{{item.vehicle.registration_plate}}</td>
+                                      <td>{{item.discountId}}</td>
+                                      <td>{{item.status}}</td>
+                                      <td>{{item.startDate}}</td>
+                                      <td>{{item.endDate}}</td>
+                                      <td>{{item.source}}</td>
+                                      <td>{{item.destination}}</td>
+                                      <td>{{item.distance}}</td>
+                                      <td>
+                                        <a href="/booking/delete/{{item.id}}"><input type="button" value="Delete" name="delete" class="btn btn-primary" id="submit"/></a>
+                                      </td>
+                                      {% if user.is_superuser %}
+                                        <td><a href="/booking/changestatus/{{item.id}}"><input type="button" value="Book" name="Book" class="btn btn-primary" id="submit"/></a></td>
+                                      {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                  </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

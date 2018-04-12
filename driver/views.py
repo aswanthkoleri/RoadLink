@@ -22,3 +22,19 @@ def driver(request):
         form=DriverForm()
         error_message='Something went wrong error'
         return render(request,'driver/index.html',{ 'form' : form ,'error':error_message})
+
+def drivers(request):
+    if request.POST:
+        form=DriverForm(request.POST)
+        return render(request,'driver/index.html',{'form':form})
+    else:
+        drivers = Driver.objects.all()
+        return render(request,'driver/driverlist.html',{ 'drivers' : drivers ,'user':request.user})
+
+def delete(request,id):
+    if request.POST:
+        return render(request,'driver/index.html',{'form':form})
+    else:
+        drivers = Driver.objects.get(id=id)
+        drivers.delete()
+        return redirect('http://localhost:8000/driver/drivers')
