@@ -110,6 +110,9 @@
                                                           <h5 class="card-title">{{vehicle.registration_plate}}</h5>
                                                         </div>
                                                         <ul class="list-group list-group-flush">
+                                                            {% if user.is_superuser %}
+                                                                <li class="list-group-item">User :{{vehicle.owner}}</li>
+                                                            {% endif %}
                                                           <li class="list-group-item">Price :{{vehicle.price}}</li>
                                                           <li class="list-group-item">Cost per km :{{vehicle.cost_per_km}}</li>
                                                           <li class="list-group-item">No of Kms Travelled : {{vehicle.no_of_km_travelled}}</li>

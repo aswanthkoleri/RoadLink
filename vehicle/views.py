@@ -34,7 +34,10 @@ def showVehicles(request):
         #     form=VehicleForm()
         return render(request,'vehicle/index.html')
     else:
-        vehiclesList = Vehicle.objects.filter(owner=request.user)
+        if request.user.is_superuser:
+            vehiclesList = Vehicle.objects.all()
+        else:
+            vehiclesList = Vehicle.objects.filter(owner=request.user)        
         return render(request,'vehicle/vehiclelist.html',{ 'vehiclesList' : vehiclesList})
 
 def delete(request,id):
@@ -46,7 +49,7 @@ def delete(request,id):
         #     instance.save()
         #     success_message='Issue Registered'
         #     form=RepairForm()
-        return render(request,'vehicle/index.html',{'form':form})
+        return render(request,'vehicle/index.html',{'form':form,'user':request.user})
     else:
         vehicle = Vehicle.objects.get(id=id)
         vehicle.delete()
