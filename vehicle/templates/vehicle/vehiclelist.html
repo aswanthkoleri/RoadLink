@@ -25,6 +25,12 @@
 .nav {
     margin-bottom: 20px;
 }
+    .card-holder{
+        padding: 20px;
+    }
+    .card {
+    }
+
 </style>
 <body>
 {% if user.is_authenticated %}
@@ -94,42 +100,29 @@
                             <div class="card-header">
                                 <h2>Vehicles</h2>
                             </div>
-                            <div class="card-body">
-                                <table class="table">
-                                  <thead>
-                                    <tr>
-                                      <!-- <th scope="col">#</th> -->
-                                      <th scope="col">Registration Plate</th>
-                                      <th scope="col">Price</th>
-                                      <th scope="col">Cost Per KM</th>
-                                      <th scope="col">No Of KM Travelled</th>
-                                      <th scope="col">Fuel Type</th>
-                                      <th scope="col">Mileage</th>
-                                      <th scope="col">Vehicle Type</th>
-                                      <th scope="col">Delete</th>
-                                      <th scope="col">Image</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    {% for vehicle in vehiclesList %}
-                                    <tr>
-                                      <!-- <th scope="row"></th> -->
-
-                                      <td>{{vehicle.registration_plate}}</td>
-                                      <td>{{vehicle.price}}</td>
-                                      <td>{{vehicle.cost_per_km}}</td>
-                                      <td>{{vehicle.no_of_km_travelled}}</td>
-                                      <td>{{vehicle.fuel_type}}</td>
-                                      <td>{{vehicle.mileage}}</td>
-                                      <td>{{vehicle.vehicle_type}}</td>
-                                      <td>
-                                        <a href="/vehicle/delete/{{vehicle.id}}"><input type="button" value="Delete" name="delete" class="btn btn-primary" id="submit"/></a>
-                                      </td>
-                                      <td><img src="{{vehicle.image.url }}" height="20px" width="20px"></td>
-                                    </tr>
-                                    {% endfor %}
-                                  </tbody>
-                                </table>
+                            <div class="card-body text-center">
+                                    <div class="row">
+                                            {% for vehicle in vehiclesList %}
+                                        <div class="col-md-4 card-holder">
+                                                <div class="card" >
+                                                        <img class="card-img-top" src="{{vehicle.image.url }}" width="300px" height="300px" alt="Card image cap">
+                                                        <div class="card-body">
+                                                          <h5 class="card-title">{{vehicle.registration_plate}}</h5>
+                                                        </div>
+                                                        <ul class="list-group list-group-flush">
+                                                          <li class="list-group-item">Price :{{vehicle.price}}</li>
+                                                          <li class="list-group-item">Cost per km :{{vehicle.cost_per_km}}</li>
+                                                          <li class="list-group-item">No of Kms Travelled : {{vehicle.no_of_km_travelled}}</li>
+                                                          <li class="list-group-item">Fuel Type : {{vehicle.fuel_type}}</li>
+                                                          <li class="list-group-item">Mileage : {{vehicle.mileage}}</li>
+                                                        </ul>
+                                                        <div class="card-body">
+                                                                <a href="/vehicle/delete/{{vehicle.id}}"><input type="button" value="Delete" name="delete" class="btn btn-primary" id="submit"/></a>
+                                                        </div>
+                                                      </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
                             </div>
                         </div>
                     </div>

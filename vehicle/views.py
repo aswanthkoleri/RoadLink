@@ -12,7 +12,7 @@ def index(request):
 
 def addVehicle(request):
     if request.POST:
-        form=VehicleForm(request.POST)
+        form=VehicleForm(request.POST,request.FILES)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.owner=request.user
