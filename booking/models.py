@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from vehicle.models import Vehicle
+from driver.models import Driver
 
 # Create your models here.
 class Book(models.Model):
@@ -27,6 +28,7 @@ class Book(models.Model):
     )
     discountId=models.CharField(max_length=100)
     allottedUser=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    allottedDriver=models.ForeignKey(Driver,null=True,blank=True,on_delete=models.CASCADE)
     vehicle=models.ForeignKey(Vehicle,on_delete=models.CASCADE)
     cost=models.FloatField()
     def __str__(self):

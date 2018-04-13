@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.http import Http404
 from django.template import loader
 from .models import Book
+from driver.models import Driver
 from .forms import BookForm
 import requests
 import geopy.distance
@@ -82,5 +83,9 @@ def change(request,id):
             booking.status = "NB"
         else:
             booking.status = "B"
+            drivers = Driver.objects.filter(status="NB")
+            for driver in drivers:
+                booking.allottedDriver = driver
+                break
         booking.save()
         return redirect('http://localhost:8000/booking/bookings')
