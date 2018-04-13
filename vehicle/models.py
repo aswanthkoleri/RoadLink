@@ -30,6 +30,7 @@ class Vehicle(models.Model):
     fuel_type = models.CharField(max_length=1,default='P',choices=FUEL_TYPE_CHOICES)
     mileage = models.DecimalField(max_digits=20,default=0,decimal_places=0)
     vehicle_type = models.CharField(max_length=1,default='P',choices=VEHICLE_TYPE_CHOICES)
+    image=models.ImageField(upload_to="vehicle_image",blank=True)
 
     def __str__(self):
         return self.registration_plate

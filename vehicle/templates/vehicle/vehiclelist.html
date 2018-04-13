@@ -107,12 +107,14 @@
                                       <th scope="col">Mileage</th>
                                       <th scope="col">Vehicle Type</th>
                                       <th scope="col">Delete</th>
+                                      <th scope="col">Image</th>
                                     </tr>
                                   </thead>
                                   <tbody>
                                     {% for vehicle in vehiclesList %}
                                     <tr>
                                       <!-- <th scope="row"></th> -->
+
                                       <td>{{vehicle.registration_plate}}</td>
                                       <td>{{vehicle.price}}</td>
                                       <td>{{vehicle.cost_per_km}}</td>
@@ -123,6 +125,7 @@
                                       <td>
                                         <a href="/vehicle/delete/{{vehicle.id}}"><input type="button" value="Delete" name="delete" class="btn btn-primary" id="submit"/></a>
                                       </td>
+                                      <td><img src="{{vehicle.image.url }}" height="20px" width="20px"></td>
                                     </tr>
                                     {% endfor %}
                                   </tbody>
