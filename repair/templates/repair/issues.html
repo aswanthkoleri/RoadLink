@@ -29,9 +29,8 @@
 <body>
 {% if user.is_authenticated %}
     <div id="wrapper">
-        {% include 'driver/navbar.html' %}
             <!-- Sidebar -->
-        <!--<div id="sidebar-wrapper">
+        <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
@@ -72,7 +71,7 @@
                 </form>
                 </li>
             </ul>
-        </div>-->
+        </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
@@ -117,9 +116,9 @@
                                       <td>{{issue.registeredUser.username}}</td>
                                       <td>{{issue.vehicle.registration_plate}}</td>
                                       <td>{% if issue.status == "NS" %}
-                                        <a href="/repair/update/{{issue.id}}"><input type="button" value="Complete" name="update" class="btn btn-primary" id="submit"/></a>
+                                        <a href="/repair/update/{{issue.id}}"><input type="button" value="Solve" name="update" class="btn btn-primary" id="submit"/></a>
                                         {% else %}
-                                            Solved
+                                            <a href="/repair/update/{{issue.id}}"><input type="button" value="Unsolve" name="update" class="btn btn-primary" id="submit"/></a>
                                         {% endif %}
                                       </td>
                                     </tr>

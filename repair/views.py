@@ -53,7 +53,10 @@ def update(request,id):
         return render(request,'repair/index.html',{'form':form})
     else:
         repair = Repair.objects.get(id=id)
-        repair.status = "S"
+        if repair.status == "S":
+            repair.status = "NS"
+        else:
+            repair.status = "S"
         repair.save()
         repairsList = Repair.objects.all()
         return redirect('http://localhost:8000/repair/issues')
