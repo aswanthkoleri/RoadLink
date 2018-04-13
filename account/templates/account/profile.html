@@ -24,7 +24,42 @@
 .nav {
     margin-bottom: 20px;
 }
+
+    .card {
+        border: 0.1px solid rgb(180, 176, 176);
+        border-radius: 3px;
+        box-shadow: 5px 5px 25px 0 rgba(46,61,73,0.2);
+        -webkit-transition : box-shadow 0.3s ease-out;
+        -moz-transition : box-shadow 0.3s ease-out;
+        -o-transition : box-shadow 0.3s ease-out;
+    }
+    .card:hover {
+        box-shadow: 2px 4px 8px 0 rgba(46,61,73,0.2);
+    }
+    .profile-pic{
+        margin : auto;
+    }
+    .social {
+        font-size: 50px;
+        text-align: center;
+        margin-top : 10px;
+    }
+    .social i{
+        width: 100%;
+    }
+    .social .fa-twitter{
+        color : cornflowerblue;
+    }
+    .social .fa-facebook{
+        color: rgb(4, 68, 187);
+    
+    }
+    .card-header {
+        font-size: 50px;
+    }
+    
 </style>
+
 <body>
 {%if user.is_authenticated %}
     <div id="wrapper">
@@ -83,17 +118,39 @@
                         <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars"></i></a>
                     </div>
                 </div>
-                <div class="jumbotron jumbotron-fluid">
-					<div class="container">
-						<h1 class="display-3">Welcome {{ user.username }}</h1>
-						<p class="lead">This is dashboard</p>
-						<hr class="my-2">
-						<p>More info</p>
-						<p class="lead">
-							<a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">More</a>
-						</p>
-					</div>
-				</div>
+               
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card profile" >
+                                    <div class="card-body">
+                                    <div class="row ">
+                                        <img class="profile-pic" src="https://via.placeholder.com/440x400" width="300px" height="400px" >
+                                    </div>
+                                    <div class="row social">
+                    
+                                            <div class="col-md-4"><i class="fa fa-facebook"></i></div>
+                                            <div class="col-md-4"><i class="fa fa-twitter"></i></div>
+                                            <div class="col-md-4"><i class="fa fa-github"></i></div>
+                                    </div>
+                                    </div>
+                            </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card detail" >
+                                        <div class="card-header">My profile</div>
+                                    <div class="card-body">
+                                     <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Username : {{user.username}} </li>
+                                        <li class="list-group-item">First name : {{user.first_name}}</li>
+                                        <li class="list-group-item">Last name : {{user.last_name}}</li>
+                                        <li class="list-group-item">Email : {{user.email}}</li>
+                                        <li class="list-group-item">Phone number : {{user.phone}}</li>
+                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
             </div>
         </div>
         <!-- /#page-content-wrapper -->
