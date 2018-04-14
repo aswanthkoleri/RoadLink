@@ -24,8 +24,15 @@
 .nav {
     margin-bottom: 20px;
 }
+body {
+    background: #ff9966;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ff5e62, #ff9966);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ff5e62, #ff9966); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-    .card {
+}
+}
+.card {
+
         border: 0.1px solid rgb(180, 176, 176);
         border-radius: 3px;
         box-shadow: 5px 5px 25px 0 rgba(46,61,73,0.2);
@@ -52,12 +59,11 @@
     }
     .social .fa-facebook{
         color: rgb(4, 68, 187);
-    
     }
     .card-header {
         font-size: 50px;
     }
-    
+
 </style>
 
 <body>
@@ -118,16 +124,14 @@
                         <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars"></i></a>
                     </div>
                 </div>
-               
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card profile" >
-                                    <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card profile" >
+                                <div class="card-body">
                                     <div class="row ">
                                         <img class="profile-pic" src="https://via.placeholder.com/440x400" width="300px" height="400px" >
                                     </div>
                                     <div class="row social">
-                    
                                             <div class="col-md-4"><i class="fa fa-facebook"></i></div>
                                             <div class="col-md-4"><i class="fa fa-twitter"></i></div>
                                             <div class="col-md-4"><i class="fa fa-github"></i></div>

@@ -10,15 +10,64 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <style>
-    .card {
+   
+    .nav {
+    margin-bottom: 20px;
+}
+body {
+    background: #ff9966;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ff5e62, #ff9966);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ff5e62, #ff9966); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.card {
+        width: 80%;
+        margin: auto;
         margin-top : 20px;
+        border: 0.1px solid rgb(180, 176, 176);
+        border-radius: 3px;
+        box-shadow: 5px 5px 25px 0 rgba(46,61,73,0.2);
+        -webkit-transition : box-shadow 0.3s ease-out;
+        -moz-transition : box-shadow 0.3s ease-out;
+        -o-transition : box-shadow 0.3s ease-out;
     }
+    .card:hover {
+        box-shadow: 2px 4px 8px 0 rgba(46,61,73,0.2);
+    }
+.form-control:focus,.form-control:active {
+   outline: none !important;
+   box-shadow: none;  
+}
+input[type=text]{
+    border:none;
+    border: 2px solid rgb(66, 67, 70); 
+    background-color:rgba(0,0,0,0) !important;
+       
+}
+input[type=password]{
+    border:none;
+    border: 2px solid rgb(66, 67, 70); 
+    background-color:rgba(0,0,0,0) !important;
+       
+}
+input[type=number]{
+    border:none;
+    border: 2px solid rgb(66, 67, 70); 
+    background-color:rgba(0,0,0,0) !important;
+       
+}
+input[type=email]{
+    border:none;
+    border: 2px solid rgb(66, 67, 70); 
+    background-color:rgba(0,0,0,0) !important;
+       
+}
 </style>
 <title>Signup</title>
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/home">
     Road Link
     </a>
     <a href="/account/login" class="btn btn-primary">Login</a>

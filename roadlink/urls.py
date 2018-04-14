@@ -24,5 +24,5 @@ urlpatterns = [
     path('booking/',include('booking.urls')),
     path('repair/',include('repair.urls')),
     path('vehicle/',include('vehicle.urls')),
-    path('',include('home.urls')),
+    path('home/',include('home.urls')),
 ]
