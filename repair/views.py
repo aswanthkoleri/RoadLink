@@ -9,8 +9,11 @@ import geopy.distance
 # Create your views here.
 
 def index(request):
-    form=RepairForm()
-    return render(request,'repair/index.html',{'form':form})
+    if request.user.is_authenticated:
+        form=RepairForm()
+        return render(request,'repair/index.html',{'form':form})
+    else:
+        return redirect("http://localhost:8000/home/404")
 
 def repair(request):
     if request.POST:
@@ -23,9 +26,12 @@ def repair(request):
             form=RepairForm()
             return render(request,'repair/index.html',{'form':form,'success' : success_message})
     else:
-        form=RepairForm()
-        error_message='Something went wrong error'
-        return render(request,'repair/index.html',{ 'form' : form ,'error':error_message})
+        if request.user.is_authenticated:
+            form=RepairForm()
+            error_message='Something went wrong error'
+            return render(request,'repair/index.html',{ 'form' : form ,'error':error_message})
+        else:
+            return redirect("http://localhost:8000/home/404")
 
 def issues(request):
     if request.POST:
@@ -38,8 +44,11 @@ def issues(request):
         #     form=RepairForm()
         return render(request,'repair/index.html',{'form':form})
     else:
-        repairsList = Repair.objects.all()
-        return render(request,'repair/issues.html',{ 'repairsList' : repairsList})
+        if request.user.is_authenticated:
+            repairsList = Repair.objects.all()
+            return render(request,'repair/issues.html',{ 'repairsList' : repairsList})
+        else:
+            return redirect("http://localhost:8000/home/404")
 
 def update(request,id):
     if request.POST:
@@ -52,11 +61,14 @@ def update(request,id):
         #     form=RepairForm()
         return render(request,'repair/index.html',{'form':form})
     else:
-        repair = Repair.objects.get(id=id)
-        if repair.status == "S":
-            repair.status = "NS"
+        if request.user.is_authenticated:
+            repair = Repair.objects.get(id=id)
+            if repair.status == "S":
+                repair.status = "NS"
+            else:
+                repair.status = "S"
+            repair.save()
+            repairsList = Repair.objects.all()
+            return redirect('http://localhost:8000/repair/issues')
         else:
-            repair.status = "S"
-        repair.save()
-        repairsList = Repair.objects.all()
-        return redirect('http://localhost:8000/repair/issues')
+            return redirect("http://localhost:8000/home/404")

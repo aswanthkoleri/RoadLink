@@ -6,3 +6,6 @@ from django.template import loader
 # Create your views here.
 def index(request):
     return render(request,'home/index.html')
+
+def notfound(request):
+	return render(request,'home/404.html')

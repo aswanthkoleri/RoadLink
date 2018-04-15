@@ -9,9 +9,11 @@
             <li>
                 <a href="/account/profile">Dashboard</a>
             </li>
+            {% if user.is_superuser %}
             <li>
                 <a href="/driver">Add driver</a>
             </li>
+            {% endif %}
             <li>
                 <a href="/driver/drivers">View all drivers</a>
             </li>

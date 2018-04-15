@@ -7,8 +7,11 @@ from .forms import VehicleForm
 # Create your views here.
 
 def index(request):
-    form=VehicleForm()
-    return render(request,'vehicle/index.html',{'form':form})
+    if request.user.is_authenticated:
+        form=VehicleForm()
+        return render(request,'vehicle/index.html',{'form':form})
+    else:
+        return redirect("http://localhost:8000/home/404")
 
 def addVehicle(request):
     if request.POST:
@@ -21,9 +24,10 @@ def addVehicle(request):
             form=VehicleForm()
             return render(request,'vehicle/index.html',{'form':form,'success' : success_message})
     else:
-        form=VehicleForm()
-        error_message='Something went wrong error'
-        return render(request,'vehicle/index.html',{ 'form' : form ,'error':error_message})
+        if request.user.is_authenticated:
+            form=VehicleForm()
+            error_message='Something went wrong error'
+            return render(request,'vehicle/index.html',{ 'form' : form ,'error':error_message})
 
 def showVehicles(request):
     if request.POST:
@@ -34,11 +38,14 @@ def showVehicles(request):
         #     form=VehicleForm()
         return render(request,'vehicle/index.html')
     else:
-        if request.user.is_superuser:
-            vehiclesList = Vehicle.objects.all()
+        if request.user.is_authenticated:
+            if request.user.is_superuser:
+                vehiclesList = Vehicle.objects.all()
+            else:
+                vehiclesList = Vehicle.objects.filter(owner=request.user)        
+            return render(request,'vehicle/vehiclelist.html',{ 'vehiclesList' : vehiclesList})
         else:
-            vehiclesList = Vehicle.objects.filter(owner=request.user)        
-        return render(request,'vehicle/vehiclelist.html',{ 'vehiclesList' : vehiclesList})
+            return redirect("http://localhost:8000/home/404")
 
 def delete(request,id):
     if request.POST:
@@ -51,6 +58,9 @@ def delete(request,id):
         #     form=RepairForm()
         return render(request,'vehicle/index.html',{'form':form,'user':request.user})
     else:
-        vehicle = Vehicle.objects.get(id=id)
-        vehicle.delete()
-        return redirect('http://localhost:8000/vehicle/vehicles')
+        if request.user.is_authenticated:
+            vehicle = Vehicle.objects.get(id=id)
+            vehicle.delete()
+            return redirect('http://localhost:8000/vehicle/vehicles')
+        else:
+            return redirect("http://localhost:8000/home/404")
