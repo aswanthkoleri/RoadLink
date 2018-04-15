@@ -4,7 +4,7 @@ from booking.models import Book
 # Create your views here.
 def index(request):
     if request.user.is_authenticated:
-        bookinglist = Book.objects.filter(allottedUser = request.user)
+        bookinglist = Book.objects.filter(allottedUser = request.user,status="B")
         totdistance = 0
         totcost = 0
         for i in bookinglist:

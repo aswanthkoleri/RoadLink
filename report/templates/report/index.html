@@ -58,21 +58,17 @@
                             {% for i in bookinglist %}
                             <tr>
                               <!-- <th scope="row"></th> --> 
-                              {% if i.status == "B" %}
                               <td>{{ i.source }}</td>
                               <td>{{ i.destination }}</td>
                               <td>{{ i.distance }}</td>
                               <td>{{ i.cost }}</td>    
-                              {% endif %}
                               
                             </tr>
                             {% endfor %}
                           </tbody>
-                          {% if i.status == "B" %}
+                        </table>
                           <p>Total Distance Travelled : {{ totdistance }}</p>
                           <p>Total expenditure : {{ totcost }}</p>
-                          {% endif %}
-                        </table>
                     </div>
                 </div>
             </div>
