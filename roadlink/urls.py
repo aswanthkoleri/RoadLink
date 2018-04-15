@@ -25,4 +25,5 @@ urlpatterns = [
     path('repair/',include('repair.urls')),
     path('vehicle/',include('vehicle.urls')),
     path('home/',include('home.urls')),
+    path('report/',include('report.urls'))
 ]
