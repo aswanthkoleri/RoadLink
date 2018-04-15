@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'requests',
     'geopy',
+    'widget_tweaks',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
