@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,20 +11,18 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <style>
-   
-    .nav {
+.nav {
     margin-bottom: 20px;
 }
 body {
     background: #ff9966;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #ff5e62, #ff9966);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #ff5e62, #ff9966); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+background : -webkit-linear-gradient(to right, #ff5e62, #ff9966);  /* Chrome 10-25, Safari 5.1-6 */
+background : linear-gradient(to right, #ff5e62, #ff9966); 
 }
-.card {
+/*.card {
         width: 80%;
         margin: auto;
-        margin-top : 20px;
+        margin-top : 100px;
         border: 0.1px solid rgb(180, 176, 176);
         border-radius: 3px;
         box-shadow: 5px 5px 25px 0 rgba(46,61,73,0.2);
@@ -62,37 +61,251 @@ input[type=email]{
     background-color:rgba(0,0,0,0) !important;
        
 }
+*/
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+body{
+    margin: 0;
+    padding: 0;
+    background: #fff;
+
+    color: #fff;
+    font-family: Arial;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+.outer{
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -40px;
+    bottom: -40px;
+    width: auto;
+    height: auto;
+    background-image: url(http://ginva.com/wp-content/uploads/2012/07/city-skyline-wallpapers-008.jpg);
+    background-size: cover;
+    -webkit-filter: blur(5px);
+    z-index: 0;
+}
+
+.grad{
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -40px;
+    bottom: -40px;
+    width: auto;
+    height: auto;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.header{
+    position: absolute;
+    top: calc(50% - 35px);
+    left: calc(50% - 255px);
+    z-index: 2;
+}
+
+.header div{
+    float: left;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 35px;
+    font-weight: 200;
+}
+
+.header div span{
+    color: #5379fa !important;
+}
+
+.login{
+    position: absolute;
+    top: calc(30% - 75px);
+    left: calc(50% - 50px);
+    height: 150px;
+    width: 350px;
+    padding: 10px;
+    z-index: 2;
+}
+
+.login input[type=text]{
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+}
+
+.login input[type=email]{
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+}
+
+
+.login input[type=password]{
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+    margin-top: 10px;
+}
+
+.login button{
+    width: 260px;
+    height: 35px;
+    background: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    color: #a18d6c;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 6px;
+    margin-top: 10px;
+}
+
+.login button:hover{
+    opacity: 0.8;
+}
+
+.login button:active{
+    opacity: 0.6;
+}
+
+.login input[type=text]:focus{
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.9);
+}
+
+.login input[type=password]:focus{
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.9);
+}
+
+.login button:focus{
+    outline: none;
+}
+
+::-webkit-input-placeholder{
+   color: #fff;
+}
+
+::-moz-input-placeholder{
+   color: #fff;
+}
+
 </style>
-<title>Signup</title>
+<title>Login</title>
 </head>
+
 <body>
-    <nav class="navbar navbar-dark bg-dark">
+    <!-- Navbar -->
+    
+   <!-- <div class="container-fluid">
+       <div class="row">
+           <div class="col-md-4 offset-md-4" >
+                <div class="card ">
+                        <div class="card-header text-center">
+                            <h1>Login</h1>
+                        </div>
+                        <div class="card-body">
+                         <form method="POST" action="/account/login" >
+                         {% csrf_token %}
+                         {{form | crispy }}
+                         <center><input type="submit" class="btn btn-primary" value="Login"></center>
+                         </form>
+                </div>
+                </div>
+           </div>
+       </div>
+   </div> -->
+
+   <div class="outer"></div>
+        <div class="grad"></div>
+        <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="/home">
     Road Link
     </a>
-    <a href="/account/login" class="btn btn-primary">Login</a>
+    <a href="/account/signup" class="btn btn-primary">Sign up</a>
     </nav>
-   <div class="container-fluid">
-       <div class="row">
-           <div class="col-md-8 offset-md-2">
-                <div class="card">
-                        <div class="card-header">
-                            <h1>Register</h1>
-                        </div>
-                        <div class="card-body">
-                         <form method="POST" action="/account/signup" >
-                         {% csrf_token %}
-                         {{form | crispy }}
-                         {{pform | crispy}}
-                         <input type="submit" class="btn btn-primary" value="submit">
-                         </form>
-                        </div>
-                    </div>
-           </div>
-       </div>
-   </div>
-   
-   
+        <div class="header">
+            <div>Road<span>Link</span></div>
+        </div>
+        <br>
+        <div class="login">
+             <form method="POST">
+          {% csrf_token %}
+           {% if form.errors %}
+            <p>Invalid details</p>
+            {% endif %}
+          <div class="field">
+          {% render_field form.username type="text" placeholder="Username" %}
+            <!-- <input type="text" name="name" id="name" placeholder="Username" /> -->
+          </div>
+          <br>
+          <div class="field">
+          {% render_field form.first_name type="text" placeholder="First Name" %}
+            <!-- <input type="text" name="name" id="name" placeholder="Username" /> -->
+          </div>
+          <br>
+          <div class="field">
+          {% render_field form.last_name type="text" placeholder="Last Name" %}
+            <!-- <input type="text" name="name" id="name" placeholder="Username" /> -->
+          </div>
+          <br>
+           <div class="field">
+          {% render_field form.email type="email" placeholder="Email" %}
+            <!-- <input type="text" name="name" id="name" placeholder="Username" /> -->
+          </div>
+          <br>
+          <div class="field">
+          {% render_field form.phone type="text" placeholder="Phone" %}
+            <!-- <input type="text" name="name" id="name" placeholder="Username" /> -->
+          </div>
+          <br>
+          <div class="field">
+          {% render_field form.password1 type="password" placeholder="Password" %}
+            <!-- <input type="text" name="name" id="name" placeholder="Username" /> -->
+          </div>
+          <br>
+          <div class="field">
+            {% render_field form.password2 type="password" placeholder="Confirm Password"  %}
+        </div>
+        <div class="field">
+            {{pform | crispy}}
+        </div>
+            <button class="btn btn-primary" type="submit" name="submit" value="sigup">Signup</button>
+    </form>
+        </div>
+        
+    <hr />
+        <!-- <input type="password" name="password" id="email" placeholder="Password" /> -->
+      </div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>

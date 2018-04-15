@@ -36,7 +36,8 @@ def logoutView(request):
 
 def profileView(request):
     if request.user.is_authenticated:
-        args = { 'user' : request.user }
+        profile = Profile.objects.get(user=request.user)
+        args = { 'user' : request.user , 'profile' : profile}
         return render(request,'account/profile.html',args)
     else:
         return redirect("http://localhost:8000/home/404")
