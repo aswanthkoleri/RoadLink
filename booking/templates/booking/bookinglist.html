@@ -135,7 +135,13 @@
                                         <a href="/booking/delete/{{item.id}}"><input type="button" value="Delete" name="delete" class="btn btn-primary" id="submit"/></a>
                                       </td>
                                       {% if user.is_superuser %}
-                                        <td><a href="/booking/changestatus/{{item.id}}"><input type="button" value="Book" name="Book" class="btn btn-primary" id="submit"/></a></td>
+                                        {% if item.status == "B" %}
+                                          <td><a href="/booking/changestatus/{{item.id}}"><input type="button" value="Revert" name="Book" class="btn btn-primary" id="submit"/></a></td>
+                                        {% elif item.status == "NB" %}
+                                          <td><a href="/booking/changestatus/{{item.id}}"><input type="button" value="Book" name="Book" class="btn btn-primary" id="submit"/></a></td>
+                                        {% else %}
+                                          <td><input type="button" value="Book" name="Book" class="btn btn-primary" id="submit" disabled/></a></td>
+                                        {% endif %}
                                       {% endif %}
                                     </tr>
                                     {% endfor %}
