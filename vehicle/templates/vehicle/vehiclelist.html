@@ -104,25 +104,48 @@
                                     <div class="row">
                                             {% for vehicle in vehiclesList %}
                                         <div class="col-md-4 card-holder">
-                                                <div class="card" >
-                                                        <img class="card-img-top" src="{{vehicle.image.url }}" width="300px" height="300px" alt="Card image cap">
-                                                        <div class="card-body">
-                                                          <h5 class="card-title">{{vehicle.registration_plate}}</h5>
+                                            <div class="card" >
+                                                <img class="card-img-top" src="{{vehicle.image.url }}" width="300px" height="300px" alt="Card image cap">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{vehicle.registration_plate}}</h5>
+                                                    <div class="modal fade" id="myModal" role="dialog">
+                                                        <div class="modal-dialog">
+                                                        
+                                                          <!-- Modal content-->
+                                                          <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" style="text-align:center">Reg.No : {{vehicle.registration_plate}}</h4>
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <ul class="list-group list-group-flush">
+                                                                    {% if user.is_superuser %}
+                                                                        <li class="list-group-item">User :{{vehicle.owner}}</li>
+                                                                    {% endif %}
+                                                                  <li class="list-group-item">Price :{{vehicle.price}}</li>
+                                                                  <li class="list-group-item">Cost per km :{{vehicle.cost_per_km}}</li>
+                                                                  <li class="list-group-item">No of Kms Travelled : {{vehicle.no_of_km_travelled}}</li>
+                                                                  {% if vehicle.fuel_type == "P" %}
+                                                                  <li class="list-group-item">Fuel Type : Petrol</li>
+                                                                  {% else %}
+                                                                  <li class="list-group-item">Fuel Type : Diesel</li>    
+                                                                  {% endif %}
+                                                                  <li class="list-group-item">Mileage : {{vehicle.mileage}}</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                          </div>
+
                                                         </div>
-                                                        <ul class="list-group list-group-flush">
-                                                            {% if user.is_superuser %}
-                                                                <li class="list-group-item">User :{{vehicle.owner}}</li>
-                                                            {% endif %}
-                                                          <li class="list-group-item">Price :{{vehicle.price}}</li>
-                                                          <li class="list-group-item">Cost per km :{{vehicle.cost_per_km}}</li>
-                                                          <li class="list-group-item">No of Kms Travelled : {{vehicle.no_of_km_travelled}}</li>
-                                                          <li class="list-group-item">Fuel Type : {{vehicle.fuel_type}}</li>
-                                                          <li class="list-group-item">Mileage : {{vehicle.mileage}}</li>
-                                                        </ul>
-                                                        <div class="card-body">
-                                                                <a href="/vehicle/delete/{{vehicle.id}}"><input type="button" value="Delete" name="delete" class="btn btn-primary" id="submit"/></a>
-                                                        </div>
-                                                      </div>
+                                                    </div>
+                                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">View Details</button>
+                                                    <br>
+                                                    <br>
+                                                    <a href="/vehicle/delete/{{vehicle.id}}"><input type="button" value="Delete" name="delete" class="btn btn-primary" id="submit"/></a>
+                                                </div>
+                                        </div>
                                         </div>
                                         {% endfor %}
                                     </div>
