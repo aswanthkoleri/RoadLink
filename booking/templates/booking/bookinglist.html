@@ -90,6 +90,11 @@
                                     {{ success }}
                                   </div>
                             {% endif %}
+                            {%if failure %}
+                            <div class="alert alert-danger" role="alert">
+                                    {{ failure }}
+                                  </div>
+                            {% endif %}
                         <div class="card">
                             <div class="card-header">
                                 <h2>Your Bookings</h2>
