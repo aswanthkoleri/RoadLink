@@ -95,7 +95,7 @@ def delete(request,id):
 
 def change(request,id):
     if request.POST:
-        return render(request,'repair/index.html',{'form':form})
+        return render(request,'booking/index.html',{'form':form})
     else:
         booking = Book.objects.get(id=id)
         if booking.status == "B":
@@ -107,14 +107,15 @@ def change(request,id):
             driver.save()
             booking.status = "NB"
             booking.allottedDriver = None
+            booking.save()
         else:
             drivers = Driver.objects.filter(status="NB")
             if drivers:
                 for driver in drivers:
                     vehicle = booking.vehicle
                     if vehicle.vehicle_status == "B":
-                        # return redirect('http://localhost:8000/booking/bookings')
-                        return render(request,'booking/bookinglist.html',{ 'bookings' : Book.objects.all() ,'user':request.user,'failure':'vehicle is already booked'})
+                        failure_message="Vehicle already booked"
+                        return redirect('http://localhost:8000/booking/bookings')
                     else:
                         booking.status = "B"
                         vehicle.vehicle_status="B"
@@ -133,5 +134,6 @@ def change(request,id):
                     booking.save()
                     break
             else:
-                return render(request,'booking/bookinglist.html',{ 'bookings' : Book.objects.all() ,'user':request.user,'failure':'No Drivers Available'})
-        return render(request,'booking/bookinglist.html',{ 'bookings' : Book.objects.all() ,'user':request.user,'success':'Operation Success'})
+                failure_message="No Drivers Available"
+                return redirect('http://localhost:8000/booking/bookings')
+        return redirect('http://localhost:8000/booking/bookings')
