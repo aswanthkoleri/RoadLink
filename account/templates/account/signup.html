@@ -83,6 +83,7 @@ input[type=email]{
                          <form method="POST" action="/account/signup" >
                          {% csrf_token %}
                          {{form | crispy }}
+                         {{pform | crispy}}
                          <input type="submit" class="btn btn-primary" value="submit">
                          </form>
                         </div>

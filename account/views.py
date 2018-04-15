@@ -1,18 +1,22 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout
-from account.forms import RegistrationForm
+from account.forms import RegistrationForm,ProfileForm
 from django.contrib.auth.models import User
+from .models import Profile
 
 def signup(request):
     if request.method=="POST":
         form=RegistrationForm(request.POST)
-        if form.is_valid():
+        profile_form = ProfileForm(request.POST)
+        if form.is_valid() and profile_form.is_valid():
             form.save()
+            profile_form.save()
             return redirect('account:login')
     else:
         form=RegistrationForm()
-    return render(request,'account/signup.html',{'form' : form})
+        profile_form = ProfileForm()
+    return render(request,'account/signup.html',{'form' : form,'pform' : profile_form})
 
 def loginView(request):
     if request.method == 'POST':
