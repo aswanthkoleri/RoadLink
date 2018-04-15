@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from django.http import Http404
+from django.utils import timezone
 from django.template import loader
 from .models import Book
 from driver.models import Driver
@@ -8,6 +9,8 @@ from .forms import BookForm
 import requests
 import geopy.distance
 # Create your views here.
+
+    
 
 def index(request):
     form=BookForm()
@@ -59,8 +62,22 @@ def booking(request):
         form=BookForm(request.POST)
         return render(request,'booking/index.html',{'form':form})
     else:
+        bookings = Book.objects.all()
+        for booking in bookings:
+            if booking.status=="B" and timezone.now()>booking.endDate:
+                vehicle = booking.vehicle
+                vehicle.status="NB"
+                vehicle.save()
+                booking.status="E"
+                driver=booking.allottedDriver
+                booking.allottedDriver=None
+                driver.status="NB"
+                booking.save()
+                driver.save()
+            elif booking.status=="NB" and timezone.now()>booking.endDate:
+                booking.status="E"
+                booking.save()
         if request.user.is_superuser:
-            bookings = Book.objects.all()
             return render(request,'booking/bookinglist.html',{ 'bookings' : bookings ,'user':request.user})
         else:
             bookings = Book.objects.filter(allottedUser=request.user)
@@ -80,12 +97,28 @@ def change(request,id):
     else:
         booking = Book.objects.get(id=id)
         if booking.status == "B":
+            vehicle = booking.vehicle
+            vehicle.vehicle_status="NB"
+            vehicle.save()
             booking.status = "NB"
+            driver=booking.allottedDriver
+            driver.status="NB"
+            driver.save()
+            booking.allottedDriver = None
         else:
             booking.status = "B"
             drivers = Driver.objects.filter(status="NB")
             for driver in drivers:
-                booking.allottedDriver = driver
+                vehicle = booking.vehicle
+                if vehicle.vehicle_status == "B":
+                    bookings = Book.objects.all()
+                    return redirect('http://localhost:8000/booking/bookings')
+                else:    
+                    vehicle.vehicle_status="B"
+                    vehicle.save()
+                    booking.allottedDriver = driver
+                    driver.status="B"
+                    driver.save()
                 break
         booking.save()
         return redirect('http://localhost:8000/booking/bookings')
