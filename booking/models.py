@@ -19,7 +19,8 @@ class Book(models.Model):
     securityDeposit=models.IntegerField()
     status_CHOICES=(
         ('B','booked'),
-        ('NB','not booked')
+        ('NB','not booked'),
+        ('E','expired')
     )
     status=models.CharField(
         max_length=2,
