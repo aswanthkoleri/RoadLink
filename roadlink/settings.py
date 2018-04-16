@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'geopy',
     'widget_tweaks',
     'material',
-    'material.frontend',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
