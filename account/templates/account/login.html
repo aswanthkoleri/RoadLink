@@ -1,257 +1,83 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 {% load widget_tweaks %}
+{% load material_form %} 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-<style>
-.nav {
-    margin-bottom: 20px;
-}
-body {
-    background: #ff9966;  /* fallback for old browsers */
-background : -webkit-linear-gradient(to right, #ff5e62, #ff9966);  /* Chrome 10-25, Safari 5.1-6 */
-background : linear-gradient(to right, #ff5e62, #ff9966); 
-}
-/*.card {
-        width: 80%;
-        margin: auto;
-        margin-top : 100px;
-        border: 0.1px solid rgb(180, 176, 176);
-        border-radius: 3px;
-        box-shadow: 5px 5px 25px 0 rgba(46,61,73,0.2);
-        -webkit-transition : box-shadow 0.3s ease-out;
-        -moz-transition : box-shadow 0.3s ease-out;
-        -o-transition : box-shadow 0.3s ease-out;
-    }
-    .card:hover {
-        box-shadow: 2px 4px 8px 0 rgba(46,61,73,0.2);
-    }
-.form-control:focus,.form-control:active {
-   outline: none !important;
-   box-shadow: none;  
-}
-input[type=text]{
-    border:none;
-    border: 2px solid rgb(66, 67, 70); 
-    background-color:rgba(0,0,0,0) !important;
-       
-}
-input[type=password]{
-    border:none;
-    border: 2px solid rgb(66, 67, 70); 
-    background-color:rgba(0,0,0,0) !important;
-       
-}
-input[type=number]{
-    border:none;
-    border: 2px solid rgb(66, 67, 70); 
-    background-color:rgba(0,0,0,0) !important;
-       
-}
-input[type=email]{
-    border:none;
-    border: 2px solid rgb(66, 67, 70); 
-    background-color:rgba(0,0,0,0) !important;
-       
-}
-*/
-@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
-
-body{
-    margin: 0;
-    padding: 0;
-    background: #fff;
-
-    color: #fff;
-    font-family: Arial;
-    font-size: 12px;
-    overflow: hidden;
-}
-
-.outer{
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    right: -40px;
-    bottom: -40px;
-    width: auto;
-    height: auto;
-    background-image: url(http://ginva.com/wp-content/uploads/2012/07/city-skyline-wallpapers-008.jpg);
-    background-size: cover;
-    -webkit-filter: blur(5px);
-    z-index: 0;
-}
-
-
-.header{
-    position: absolute;
-    top: calc(50% - 35px);
-    left: calc(50% - 255px);
-    z-index: 2;
-}
-
-.header div{
-    float: left;
-    color: #fff;
-    font-family: 'Exo', sans-serif;
-    font-size: 35px;
-    font-weight: 200;
-}
-
-.header div span{
-    color: #5379fa !important;
-}
-
-.login{
-    position: absolute;
-    top: calc(50% - 75px);
-    left: calc(50% - 50px);
-    height: 150px;
-    width: 350px;
-    padding: 10px;
-    z-index: 2;
-}
-
-.login input[type=text]{
-    width: 250px;
-    height: 30px;
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.6);
-    border-radius: 2px;
-    color: #fff;
-    font-family: 'Exo', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 4px;
-}
-
-.login input[type=password]{
-    width: 250px;
-    height: 30px;
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.6);
-    border-radius: 2px;
-    color: #fff;
-    font-family: 'Exo', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 4px;
-    margin-top: 10px;
-}
-
-.login button{
-    width: 260px;
-    height: 35px;
-    background: #fff;
-    border: 1px solid #fff;
-    cursor: pointer;
-    border-radius: 2px;
-    color: #a18d6c;
-    font-family: 'Exo', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 6px;
-    margin-top: 10px;
-}
-
-.login button:hover{
-    opacity: 0.8;
-}
-
-.login button:active{
-    opacity: 0.6;
-}
-
-.login input[type=text]:focus{
-    outline: none;
-    border: 1px solid rgba(255,255,255,0.9);
-}
-
-.login input[type=password]:focus{
-    outline: none;
-    border: 1px solid rgba(255,255,255,0.9);
-}
-
-.login button:focus{
-    outline: none;
-}
-
-::-webkit-input-placeholder{
-   color: rgba(255,255,255,0.6);
-}
-
-::-moz-input-placeholder{
-   color: rgba(255,255,255,0.6);
-}
-
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 <title>Login</title>
 </head>
-
+<style>
+    .card {
+        margin-top : 50px;
+    }
+</style>
 <body>
     <!-- Navbar -->
-    
-   <!-- <div class="container-fluid">
-       <div class="row">
-           <div class="col-md-4 offset-md-4" >
+
+<!--     <nav class="navbar navbar-dark bg-dark">
+<a class="navbar-brand" href="/home">
+Road Link
+</a>
+<a href="/account/signup" class="btn btn-primary">Sign up</a>
+</nav> -->
+
+    <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Road Link</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/account/signup" class="waves-effect waves-light btn-large">Signup</a></li>
+            <!-- <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">JavaScript</a></li> -->
+          </ul>
+        </div>
+      </nav>
+<div class="container-fluid">
+        <div class="row">
+           <div class="col s4 offset-s4" >
                 <div class="card ">
-                        <div class="card-header text-center">
+                    <div class="card-content">
+                        <div class="card-title center">
                             <h1>Login</h1>
                         </div>
                         <div class="card-body">
                          <form method="POST" action="/account/login" >
                          {% csrf_token %}
-                         {{form | crispy }}
-                         <center><input type="submit" class="btn btn-primary" value="Login"></center>
-                         </form>
-                </div>
+                         <div class="row">
+                         <div class="col s12">
+                         <div class="row">
+                             <div class="input-field col s12">    
+                                {% render_field form.username type="text" id="Username" class="validate" %}
+                                <label for="Username">Username</label>
+                            </div>
+                            <div class="input-field col s12">    
+                                    {% render_field form.password type="password" id="password" class="validate" %}
+                                    <label for="password">password</label>
+                                </div>
+                         </div>
+                         <div class="row">
+                             <div class="col s12 center">
+                                <input type="submit" class="waves-effect waves-light btn-large" value="Login">
+                             </div>
+                         </div>
+                         <center></center>
+                         </div>
+                         </div>
+                        </form>
+                        </div>
+                    </div>
                 </div>
            </div>
        </div>
-   </div> -->
+   </div>
 
-   <div class="outer"></div>
-        <div class="grad"></div>
-        <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="/home">
-    Road Link
-    </a>
-    <a href="/account/signup" class="btn btn-primary">Sign up</a>
-    </nav>
-        <div class="header">
-            <div>Road<span>Link</span></div>
-        </div>
-        <br>
-        <div class="login">
-            <form method="post">
-          {% csrf_token %}
-           {% if form.errors %}
-            <p>Wrong username or password.Please try again</p>
-            {% endif %}
-          <div class="field">
-          {% render_field form.username type="text" placeholder="Username" %}
-            <!-- <input type="text" name="name" id="name" placeholder="Username" /> -->
-          </div>
-          <div class="field">
-            {% render_field form.password type="password" placeholder="Password"  %}
-        </div>
-            <button class="btn btn-primary" type="submit" name="submit" value="login">LOGIN</button>
-    </form>
-        </div>
-        
-    <hr />
-        <!-- <input type="password" name="password" id="email" placeholder="Password" /> -->
-      </div>
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>

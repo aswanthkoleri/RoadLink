@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'requests',
     'geopy',
     'widget_tweaks',
+    'material',
+    'material.frontend',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
