@@ -32,7 +32,14 @@ def logoutView(request):
 
 def profileView(request):
     if request.user.is_authenticated:
-        args = { 'user' : request.user}
+        user=request.user
+        form=RegistrationForm(instance=user)
+        args = { 'user' : request.user,'form' : form}
         return render(request,'account/profile.html',args)
     else:
         return redirect("http://localhost:8000/home/404")
+    if request.method == "POST":
+        form=RegistrationForm(request.POST,instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('account:profile')

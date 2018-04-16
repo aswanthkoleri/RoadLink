@@ -14,11 +14,13 @@
         <li><a href="/repair">Repair</a></li>
         <li><a href="/repair/issues">Repair List</a></li>
 </ul>
-    <nav>
+    <nav style=" background: #808080;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3fada8, #808080);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3fada8, #808080); ">
     <div class="nav-wrapper">
-          <a href="#" class="brand-logo">Road Link</a>
+          <a href="#" class="brand-logo">&nbsp &nbsp&nbsp&nbsp<font style="color : #000;">Road</font> Link</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/home">Home</a></li>
+            <!-- <li><a href="/home">Home</a></li> -->
             <li><a href="/account/profile">Dashboard</a></li>
             <li><a class="dropdown-trigger" href="#!" data-target="driver">Driver<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a class="dropdown-trigger" href="#!" data-target="vehicle">Vehicle<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -27,7 +29,7 @@
             <li><a href="/report">View report</a></li>
             <li><form action="/account/logout" method="POST">
                 {%csrf_token%}
-                <input type="submit"  class="waves-effect waves-light btn-large" value="Logout">
+                <input type="submit"  class="waves-effect waves-light btn-small" style="background : #788383;" value="Logout">
             </form></li>
         </ul>
     </div>

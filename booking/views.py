@@ -8,11 +8,11 @@ from driver.models import Driver
 from .forms import BookForm
 import requests
 import geopy.distance
+
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 # Create your views here.
 
-    
 
 def index(request):
     if request.user.is_authenticated:
