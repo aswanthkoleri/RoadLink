@@ -102,7 +102,8 @@
                                 <form method="POST" style="margin: 0">
                                     {% csrf_token %}
                                     <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
-                                    <button id="search_submit" type="submit" >Submit</button>
+                                    <button id="search_submit" type="submit" name="searchb" class="btn btn-success">Submit</button>
+                                    <button id="search_submit" type="submit" name="viewallb" class="btn btn-primary">View All</button>
                                 </form>
                             </div>
                             <div class="card-body text-center">

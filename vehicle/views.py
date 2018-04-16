@@ -30,9 +30,12 @@ def addVehicle(request):
             return render(request,'vehicle/index.html',{ 'form' : form ,'error':error_message})
 
 def showVehicles(request):
-    if request.POST:
+    if request.method=='POST' and 'searchb' in request.POST:
         search_query = request.POST.get('search_box')
         vehiclesList = Vehicle.objects.filter(registration_plate=search_query)
+        return render(request,'vehicle/vehiclelist.html',{ 'vehiclesList' : vehiclesList})
+    elif request.method=='POST' and 'viewallb' in request.POST: 
+        vehiclesList = Vehicle.objects.all()   
         return render(request,'vehicle/vehiclelist.html',{ 'vehiclesList' : vehiclesList})
     else:
         if request.user.is_authenticated:

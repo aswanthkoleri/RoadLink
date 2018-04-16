@@ -1,4 +1,18 @@
-__pycache__
+vehicle/__pycache__/
+vehicle/migrations/
+account/__pycache__/
+account/migrations/
+driver/__pycache__/
+driver/migrations/
+booking/__pycache__/
+booking/migrations/
+report/__pycache__/
+report/migrations/
+home/__pycache__/
+home/migrations/
+repair/__pycache__/
+repair/migrations/
+db.sqlite3
 # Logs
 logs
 *.log
@@ -58,4 +72,4 @@ typings/
 # dotenv environment variables file
 .env
 
-venv
+venv/
