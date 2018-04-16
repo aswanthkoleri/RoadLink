@@ -95,7 +95,8 @@
                                 <h2>Drivers</h2>
                             </div>
                             <div class="card-body">
-                                <table class="table">
+                              <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+                                <table id="driver" class="table">
                                   <thead>
                                     <tr>
                                       <!-- <th scope="col">#</th> -->
@@ -161,6 +162,30 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+    $(document).ready(function() {
+      $('#driver').DataTable();
+    } );
+
+    function myFunction() {
+  var input, filter, table, tr, td, i,j;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("driver");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    for(j=0;j<7;j++){
+      td = tr[i].getElementsByTagName("td")[j];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+        break;
+      } else {
+        tr[i].style.display = "none";
+      }
+    }     
+    }
+  }
+}
     </script>
 
 </body>

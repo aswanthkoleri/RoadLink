@@ -31,12 +31,9 @@ def addVehicle(request):
 
 def showVehicles(request):
     if request.POST:
-        # form=VehicleForm(request.POST)
-        # if form.is_valid():
-        #     form.save()
-        #     success_message='Adding done'
-        #     form=VehicleForm()
-        return render(request,'vehicle/index.html')
+        search_query = request.POST.get('search_box')
+        vehiclesList = Vehicle.objects.filter(registration_plate=search_query)
+        return render(request,'vehicle/vehiclelist.html',{ 'vehiclesList' : vehiclesList})
     else:
         if request.user.is_authenticated:
             if request.user.is_superuser:
