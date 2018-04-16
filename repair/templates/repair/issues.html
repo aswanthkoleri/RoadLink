@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <!-- Custom styles for this template -->
     <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
-
+    <link href="{% static 'css/datatables-plugins/dataTables.bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/datatables-responsive/dataTables.responsive.css' %}" rel="stylesheet">
 </head>
 <style>
 .nav {
@@ -90,12 +91,12 @@
                                     {{ success }}
                                   </div>
                             {% endif %}
-                        <div class="card">
+                        <div  style="width:55%;margin-left: 23%;" class="card">
                             <div class="card-header">
                                 <h2>Issues</h2>
                             </div>
                             <div class="card-body">
-                                <table class="table">
+                                <table width="100%" id="dataTables-example" class="table table-striped table-bordered table-hover">
                                   <thead>
                                     <tr>
                                       <!-- <th scope="col">#</th> -->
@@ -149,11 +150,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="{% static 'css/datatables/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'css/datatables-plugins/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'css/datatables-responsive/dataTables.responsive.js' %}"></script>
     <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+    });
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
     });
     </script>
 
