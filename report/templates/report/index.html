@@ -43,6 +43,7 @@
                     <div class="card-header">
                         <h2>Report</h2>
                     </div>
+                    {% if bookinglist %}
                     <div class="card-body">
                         <table class="table">
                           <thead>
@@ -67,6 +68,9 @@
                             {% endfor %}
                           </tbody>
                         </table>
+                        {% else %}
+                        <p> You do not have any valid bookings!<p>
+                          {% endif %}
                           <p>Total Distance Travelled : {{ totdistance }}</p>
                           <p>Total expenditure : {{ totcost }}</p>
                     </div>
