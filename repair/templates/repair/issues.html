@@ -29,8 +29,9 @@
 <body>
 {% if user.is_authenticated %}
     <div id="wrapper">
+            {% include 'driver/navbar.html' %}
             <!-- Sidebar -->
-        <div id="sidebar-wrapper">
+        <!--<div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
@@ -71,7 +72,7 @@
                 </form>
                 </li>
             </ul>
-        </div>
+        </div>-->
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
