@@ -1,89 +1,147 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 {% load widget_tweaks %}
-{% load material_form %} 
+
+
 <!DOCTYPE html>
 <html lang="en">
+
+<!--================================================================================
+    Item Name: Materialize - Material Design Admin Template
+    Version: 3.1
+    Author: GeeksLabs
+    Author URL: http://www.themeforest.net/user/geekslabs
+================================================================================ -->
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
+  <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+  <title>Login Page | Materialize - Material Design Admin Template</title>
+
+  <!-- Favicons-->
+  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+  <!-- Favicons-->
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+  <!-- For iPhone -->
+  <meta name="msapplication-TileColor" content="#00bcd4">
+  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+  <!-- For Windows Phone -->
+
+
+  <!-- CORE CSS-->
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link href="{% static 'css/materialize.min.css' %}" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-<title>Login</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+<link href="{% static 'css/prism.css' %}" rel="stylesheet">
+<link href="{% static 'css/page-center.css' %}" rel="stylesheet">
+<link href="{% static 'css/scroll.css' %}" rel="stylesheet">
+  
 </head>
-<body>
-   <nav>
-    <div class="nav-wrapper">
-          <a href="#" class="brand-logo">Road Link</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/account/login" class="waves-effect waves-light btn-large" >Login</a></li>            <!-- <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">JavaScript</a></li> -->
-          </ul>
+
+<body class="cyan">
+  <!-- Start Page Loading -->
+ <!--  <div id="loader-wrapper">
+      <div id="loader"></div>        
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+  </div> -->
+  <!-- End Page Loading -->
+
+
+
+  <div>
+    <div class="col s12 z-depth-4 card-panel">
+      <form class="login-form" method="POST" action="/account/signup" >
+        {% csrf_token %}
+        <div class="row">
+          <div class="input-field col s12 center">
+            <img src="{% static 'logo.jpg' %}">
+          </div>
         </div>
-      </nav>
-      <div class="container-fluid">
-            <div class="row">
-               <div class="col s6 offset-s3" >
-                    <div class="card ">
-                        <div class="card-content">
-                            <div class="card-title center">
-                                <h1>Register</h1>
-                            </div>
-                            <div class="card-body">
-                             <form method="POST" action="/account/signup" >
-                             {% csrf_token %}
-                             <div class="row">
-                             <div class="col s12">
-                             <div class="row">
-                                 <div class="input-field col s12">    
-                                    {% render_field form.username type="text" id="Username" class="validate" %}
-                                    <label for="Username">Username</label>
-                                </div>
-                                <div class="input-field col s12">    
-                                    {% render_field form.first_name type="text" id="First_name" class="validate" %}
-                                    <label for="First_name">First name</label>
-                                </div>
-                                <div class="input-field col s12">    
-                                    {% render_field form.last_name type="text" id="last_name" class="validate" %}
-                                    <label for="last_name">Last name</label>
-                                </div>
-                                <div class="input-field col s12">    
-                                    {% render_field form.email type="email" id="email" class="validate" %}
-                                    <label for="email">Email</label>
-                                </div>
-                                <div class="input-field col s12">    
-                                    {% render_field form.phone type="text" id="phone" class="validate" maxLength="10" %}
-                                    <label for="phone">Phone</label>
-                                </div>
-                                <div class="input-field col s12"> 
-                                    {% render_field form.password1 type="password" id="password"  %}
-                                    <label for="password">Password</label>
-                                </div>
-                                <div class="input-field col s12"> 
-                                        {% render_field form.password2 type="password" id="confirm_password"  %}
-                                <label for="confirm_password">Confirm Password</label>
-                                </div>
-                             </div>
-                             <div class="row">
-                                 <div class="col s12 center">
-                                    <input type="submit" class="waves-effect waves-light btn-large" value="Sign up">
-                                 </div>
-                             </div>
-                             <center></center>
-                             </div>
-                             </div>
-                            </form>
-                            </div>
-                        </div>
-                    </div>
-               </div>
-           </div>
-       </div>
+        <div class="row">
+          <div class="input-field col s12">
+            {% render_field form.username type="text" id="username" class="validate" %}
+            <label for="username" class="center-align">Username</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            {% render_field form.first_name type="text" id="username" class="validate" %}
+            <label for="username" class="center-align">First Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            {% render_field form.last_name type="text" id="username" class="validate" %}
+            <label for="username" class="center-align">Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            {% render_field form.email type="email" id="username" class="validate" %}
+            <label for="username" class="center-align">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            {% render_field form.phone type="text" id="username" class="validate" maxLength="10" %}
+            <label for="username" class="center-align">Phone</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <!-- <i class="mdi-action-lock-outline prefix"></i> -->
+            
+            {% render_field form.password1 type="password" id="password" class="validate" %}
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <!-- <i class="mdi-action-lock-outline prefix"></i> -->
+            
+            {% render_field form.password2 type="password" id="password" class="validate" %}
+            <label for="password">Confirm Password</label>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="submit" class="btn waves-effect waves-light col s12" value="Register">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <p class="margin medium-small"><a href="http://localhost:8000/account/login">Login Instead!</a></p>
+          </div>        
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
+
+  <!-- ================================================
+    Scripts
+    ================================================ -->
+
+  <!-- jQuery Library -->
+   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+      <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="{% static 'js/plugins.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/prism.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/scroll.js' %}"></script>
+
 </body>
+
 </html>
