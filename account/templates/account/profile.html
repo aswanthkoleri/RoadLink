@@ -8,233 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Add driver</title>
-
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <!-- Custom styles for this template -->
-    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
-
 </head>
-<style>
-.nav {
-    margin-bottom: 20px;
-}
-body {
-    background: #1E1E1E;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #1E1E1E, #1E1E1E);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #1E1E1E, #1E1E1E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-}
-
-.card {
-        border: 0.1px solid rgb(180, 176, 176);
-        border-radius: 3px;
-        box-shadow: 5px 5px 25px 0 rgba(46,61,73,0.2);
-        -webkit-transition : box-shadow 0.3s ease-out;
-        -moz-transition : box-shadow 0.3s ease-out;
-        -o-transition : box-shadow 0.3s ease-out;
-    }
-    .card:hover {
-        box-shadow: 2px 4px 8px 0 rgba(46,61,73,0.2);
-    }
-    .profile-pic{
-        margin : auto;
-    }
-    .social {
-        font-size: 50px;
-        text-align: center;
-        margin-top : 10px;
-    }
-    .social i{
-        width: 100%;
-    }
-    .social .fa-twitter{
-        color : cornflowerblue;
-    }
-    .social .fa-facebook{
-        color: rgb(4, 68, 187);
-    }
-    .card-header {
-        font-size: 50px;
-    }
-
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600);
-@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
-.snip1344 {
-  font-family: 'Open Sans', Arial, sans-serif;
-  position: relative;
-  float: left;
-  overflow: hidden;
-  margin: 18px 1%;
-  min-width: 400px;
-  max-width: 500px;
-  width: 100%;
-  height: 400px;
-  color: #ffffff;
-  text-align: center;
-  line-height: 1.4em;
-  background-color: #141414;
-}
-.snip1344 * {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-}
-.snip1344 .background {
-  width: 100%;
-  vertical-align: top;
-  opacity: 0.2;
-  -webkit-filter: grayscale(100%) blur(10px);
-  filter: grayscale(100%) blur(10px);
-  -webkit-transition: all 2s ease;
-  transition: all 2s ease;
-}
-.snip1344 figcaption {
-  width: 100%;
-  padding: 15px 25px;
-  position: absolute;
-  left: 0;
-  top: 50%;
-}
-.snip1344 .profile {
-  border-radius: 50%;
-  position: absolute;
-  bottom: 50%;
-  left: 50%;
-  top:20%;
-  max-width: 200px;
-  opacity: 1;
-  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  -webkit-transform: translate(-50%, 0%);
-  transform: translate(-50%, 0%);
-}
-.snip1344 h3 {
-  margin: 100px 100px 15px;
-  font-weight: 400;
-}
-.snip1344 h3 span {
-  display: block;
-  font-size: 0.6em;
-  color: #f39c12;
-  opacity: 0.75;
-}
-.snip1344 i {
-  padding: 10px 5px;
-  display: inline-block;
-  font-size: 32px;
-  color: #ffffff;
-  text-align: center;
-  opacity: 0.65;
-}
-.snip1344 a {
-  text-decoration: none;
-}
-.snip1344 i:hover {
-  opacity: 1;
-  -webkit-transition: all 0.35s ease;
-  transition: all 0.35s ease;
-}
-.snip1344:hover .background,
-.snip1344.hover .background {
-  -webkit-transform: scale(1.3);
-  transform: scale(1.3);
-}
-/* Demo purposes only */
-body {
-  background-color: #212121;
-}
-
-
-</style>
-
 <body>
 {%if user.is_authenticated %}
-    <div id="wrapper">
         {% include 'driver/navbar.html' %}
-        <!-- Sidebar -->
-        <!-- Sidebar -->
-        <!--<div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                       Road Link
-                    </a>
-                </li>
-                <li>
-                    <a href="/account/profile">Dashboard</a>
-                </li>
-                <li>
-                    <a href="/driver">View all drivers</a>
-                </li>
-                <li>
-                    <a href="/driver">Add driver</a>
-                </li>
-                <li>
-                    <a href="/vehicle/vehicles">View your vehicles</a>
-                </li>
-                <li>
-                    <a href="#">View all trips</a>
-                </li>
-                <li>
-                    <a href="/vehicle/addVehicle">Add vehicle</a>
-                </li>
-                <li>
-                    <a href="/repair">Repair</a>
-                </li>
-                <li>
-                    <a href="/repair/issues">Repair List</a>
-                </li>
-                <li>
-                    <a href="#">View report</a>
-                </li>
-                <li>
-                    <form action="/account/logout" method="POST">
-                    {%csrf_token%}
-                    <input type="submit" class="btn btn-primary" value="Logout">
-                </form>
-                </li>
-            </ul>
-        </div>-->
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
             <div class="container-fluid">
-				<div class="row nav">
-                    <div class="col-md-2">
-                        <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars"></i></a>
-                    </div>
-                </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <!-- <div class="card profile" >
-                                <div class="card-body">
-                                    <div class="row ">
-                                        <img class="profile-pic" src="{{profile.image.url}}" width="300px" height="400px" >
-                                    </div>
-                                    <div class="row social">
-                                            <div class="col-md-4"><i class="fa fa-facebook"></i></div>
-                                            <div class="col-md-4"><i class="fa fa-twitter"></i></div>
-                                            <div class="col-md-4"><i class="fa fa-github"></i></div>
-                                    </div>
-                                    </div>
-                            </div> -->
-
-                            <figure class="snip1344"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample1.jpg" alt="profile-sample1" class="background"/><img src="{{profile.image.url}}" alt="profile-sample1" class="profile"/>
-                              <figcaption>
-                                <h3>{{user.first_name}} {{user.last_name}}<span>{{user.username}}</span></h3>
-                                <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a><a href="#"> <i class="ion-social-twitter-outline"></i></a><a href="#"> <i class="ion-social-vimeo-outline"></i></a></div>
-                              </figcaption>
-                            </figure>
-
-                                <br>
                                 <div class="card detail" >
                                         <div class="card-header">Profile Details</div>
                                     <div class="card-body">
@@ -248,12 +36,9 @@ body {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                    </div>
             </div>
-        </div>
         <!-- /#page-content-wrapper -->
-
-    </div>
 {%else%}
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
