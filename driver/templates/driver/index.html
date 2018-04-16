@@ -12,14 +12,12 @@
 
     <title>Add driver</title>
 
+    {% include 'material/includes/material_css.html' %}
+    <script src="{% static 'material/js/jquery.js' %}"></script>
+    {% include 'material/includes/material_js.html' %}
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 </head>
 <style>
 .nav {
@@ -28,7 +26,7 @@
 </style>
 <body>
 {% if user.is_authenticated %}
-    <div id="wrapper">
+
         {% include 'driver/navbar.html' %}
         <!-- Sidebar -->
         <!-- Sidebar -->
@@ -79,29 +77,26 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="row nav">
-                    <div class="col-md-2">
-                        <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars"></i></a>
-                    </div>
-                </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col s8 offset-s2">
                             {%if success %}
                             <div class="alert alert-success" role="alert">
                                     {{ success }}
                                   </div>
                             {% endif %}
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-title center">
                                 <h2>Add driver</h2>
                             </div>
-                            <div class="card-body">
+                            <div class="card-content">
                             <form action="/driver/addDriver" method="POST">
                             {% csrf_token %}
-                            {{ form | crispy }}
-                            <div class="form-group row">
-                            <input type="submit" name="submit" class="btn btn-primary" id="submit"/>
-                            </div>
+                            {{ form }}
+                            <div class="row">
+                                    <div class="col s4 offset-s4 center">
+                                        <input type="submit" class="waves-effect waves-light btn-large" value="Add">
+                                    </div>
+                                </div>
                             </form>
                             </div>
                         </div>

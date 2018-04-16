@@ -13,12 +13,13 @@
     <title>Issues List</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+    {% include 'material/includes/material_css.html' %}
+    <script src="{% static 'material/js/jquery.js' %}"></script>
+    {% include 'material/includes/material_js.html' %}
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
     <link href="{% static 'css/datatables-plugins/dataTables.bootstrap.css' %}" rel="stylesheet">
     <link href="{% static 'css/datatables-responsive/dataTables.responsive.css' %}" rel="stylesheet">
 </head>
@@ -79,23 +80,18 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="row nav">
-                    <div class="col-md-2">
-                        <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars"></i></a>
-                    </div>
-                </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col s12">
                             {%if success %}
                             <div class="alert alert-success" role="alert">
                                     {{ success }}
                                   </div>
                             {% endif %}
-                        <div  style="width:55%;margin-left: 23%;" class="card">
-                            <div class="card-header">
+                        <div class="card">
+                            <div class="card-title">
                                 <h2>Issues</h2>
                             </div>
-                            <div class="card-body">
+                            <div class="card-content">
                                 <table width="100%" id="dataTables-example" class="table table-striped table-bordered table-hover">
                                   <thead>
                                     <tr>

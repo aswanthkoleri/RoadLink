@@ -1,18 +1,29 @@
-
+<ul id="driver" class="dropdown-content">
+       <li><a href="/driver">Add driver</a></li>
+       <li><a href="/driver/drivers">View all drivers</a></li>
+</ul>
+<ul id="vehicle" class="dropdown-content">
+        <li> <a href="/vehicle/addVehicle">Add vehicle</a></li>
+        <li><a href="/vehicle/vehicles">View your vehicles</a></li>
+</ul>
+<ul id="booking" class="dropdown-content">
+        <li><a href="/booking">Book a trip</a></li>
+        <li><a href="/booking/bookings">My bookings</a></li>
+</ul>
+<ul id="repair" class="dropdown-content">
+        <li><a href="/repair">Repair</a></li>
+        <li><a href="/repair/issues">Repair List</a></li>
+</ul>
     <nav>
     <div class="nav-wrapper">
           <a href="#" class="brand-logo">Road Link</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/home">Home</a></li>
             <li><a href="/account/profile">Dashboard</a></li>
-            {% if user.is_superuser %}<li><a href="/driver">Add driver</a></li>{% endif %}
-            <li><a href="/driver/drivers">View all drivers</a></li>
-            <li> <a href="/vehicle/addVehicle">Add vehicle</a></li>
-            <li><a href="/vehicle/vehicles">View your vehicles</a></li>
-            <li><a href="/booking">Book a trip</a></li>
-            <li><a href="/booking/bookings">My bookings</a></li>
-            <li><a href="/repair">Repair</a></li>
-            <li><a href="/repair/issues">Repair List</a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="driver">Driver<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="vehicle">Vehicle<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="booking">Booking<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="repair">Repair<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a href="/report">View report</a></li>
             <li><form action="/account/logout" method="POST">
                 {%csrf_token%}
@@ -21,3 +32,7 @@
         </ul>
     </div>
     </nav>
+    <script>
+   
+        $(".dropdown-trigger").dropdown();
+   </script>

@@ -9,6 +9,12 @@
     <meta name="author" content="">
 
     <title>Vehicles</title>
+    {% include 'material/includes/material_css.html' %}
+    <script src="{% static 'material/js/jquery.js' %}"></script>
+    {% include 'material/includes/material_js.html' %}
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 <!--     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
     <link href="{% static 'css/datatables-plugins/dataTables.bootstrap.css' %}" rel="stylesheet">
@@ -31,11 +37,10 @@
                                     {{ failure }}
                                   </div>
                             {% endif %}
-                        <div class="card">
-                            <div class="card-title ">
+    
                                 <h2>Your Bookings</h2>
-                            </div>
-                            <div class="card-content">
+                          
+                            
                                 <div class="col s12">
                                 <table id="dataTables-example" class="table table-striped table-bordered table-hover">
                                   <thead>
@@ -90,10 +95,6 @@
                               </table>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- /#page-content-wrapper -->
     <!-- /#wrapper -->
 {% else %}

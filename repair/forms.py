@@ -4,4 +4,4 @@ from .models import Repair
 class RepairForm(forms.ModelForm):
     class Meta:
         model=Repair
-        fields=('vehicle','issue')
+        fields=('issue','vehicle',)

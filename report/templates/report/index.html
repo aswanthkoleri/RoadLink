@@ -13,32 +13,25 @@
     <title>Add driver</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+    {% include 'material/includes/material_css.html' %}
+    <script src="{% static 'material/js/jquery.js' %}"></script>
+    {% include 'material/includes/material_js.html' %}
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
 
 </head>
 <style>
-.nav {
-    margin-bottom: 20px;
-}
+
 </style>
 <body>
 {% if user.is_authenticated %}
     <div id="wrapper">
         {% include 'driver/navbar.html' %}
-        
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="row nav">
-                    <div class="col-md-2">
-                        <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars"></i></a>
-                    </div>
-                </div>
                 <div class="card">
                     <div class="card-header">
                         <h2>Report</h2>
@@ -62,8 +55,7 @@
                               <td>{{ i.source }}</td>
                               <td>{{ i.destination }}</td>
                               <td>{{ i.distance }}</td>
-                              <td>{{ i.cost }}</td>    
-                              
+                              <td>{{ i.cost }}</td> 
                             </tr>
                             {% endfor %}
                           </tbody>
