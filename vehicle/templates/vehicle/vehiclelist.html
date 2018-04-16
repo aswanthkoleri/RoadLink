@@ -83,11 +83,7 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="row nav">
-                    <div class="col-md-2">
-                        <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fa fa-bars"></i></a>
-                    </div>
-                </div>
+                
                 <div class="row">
                     <div class="col-md-12">
                             {%if success %}
@@ -98,62 +94,56 @@
                         <div class="card">
                             <div class="card-header">
                                 <h2>Vehicles</h2>
-                                <form method="POST" style="margin: 0">
+                                <!-- <form method="POST" style="margin: 0">
                                     {% csrf_token %}
                                     <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
                                     <button id="search_submit" type="submit" name="searchb" class="btn btn-success">Submit</button>
                                     <button id="search_submit" type="submit" name="viewallb" class="btn btn-primary">View All</button>
-                                </form>
+                                </form> -->
                             </div>
                             <div class="card-body text-center">
-                                    <div class="row">
-                                            {% for vehicle in vehiclesList %}
-                                        <div class="col-md-4 card-holder">
-                                            <div class="card" >
-                                                <img class="card-img-top" src="{{vehicle.image.url }}" width="300px" height="300px" alt="Card image cap">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">{{vehicle.registration_plate}}</h5>
-                                                    <div class="modal fade" id="myModal" role="dialog">
-                                                        <div class="modal-dialog">
-                                                        
-                                                          <!-- Modal content-->
-                                                          <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title" style="text-align:center">Reg.No : {{vehicle.registration_plate}}</h4>
-                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <ul class="list-group list-group-flush">
+                                <div class="row">
+                                    {% for vehicle in vehiclesList %}
+                                    <div class="col s8 m3">
+                                      <div class="card">
+                                        <div class="card-image">
+                                          <img width="300px" height="300px" src="{{vehicle.image.url }}">
+                                          <span class="card-title">{{vehicle.registration_plate}}</span>
+                                        </div>
+                                        
+                                        <div class="card-action">
+                                          <a class="waves-effect waves-light btn modal-trigger" onclick="$('#modal1').modal('open');">More Details</a>
+                                          <a href="/vehicle/delete/{{vehicle.id}}"><button class="waves-effect waves-light btn">Delete</button></a>
+                                        </div>
+                                          <!-- Modal Structure -->
+                                          <div id="modal1" class="modal">
+                                            <div class="modal-content">
+                                              <h4>{{vehicle.registration_plate}}</h4>
+                                              <ul class="collection">
                                                                     {% if user.is_superuser %}
-                                                                        <li class="list-group-item">User :{{vehicle.owner}}</li>
+                                                                        <li class="collection-item">Owner :{{vehicle.owner}}</li>
                                                                     {% endif %}
-                                                                  <li class="list-group-item">Price :{{vehicle.price}}</li>
-                                                                  <li class="list-group-item">Cost per km :{{vehicle.cost_per_km}}</li>
-                                                                  <li class="list-group-item">No of Kms Travelled : {{vehicle.no_of_km_travelled}}</li>
+                                                                  <li class="collection-item">Price :{{vehicle.price}}</li>
+                                                                  <li class="collection-item">Cost per km :{{vehicle.cost_per_km}}</li>
+                                                                  <li class="collection-item">No of Kms Travelled : {{vehicle.no_of_km_travelled}}</li>
                                                                   {% if vehicle.fuel_type == "P" %}
-                                                                  <li class="list-group-item">Fuel Type : Petrol</li>
+                                                                  <li class="collection-item">Fuel Type : Petrol</li>
                                                                   {% else %}
-                                                                  <li class="list-group-item">Fuel Type : Diesel</li>    
+                                                                  <li class="collection-item">Fuel Type : Diesel</li>    
                                                                   {% endif %}
-                                                                  <li class="list-group-item">Mileage : {{vehicle.mileage}}</li>
+                                                                  <li class="collection-item">Mileage : {{vehicle.mileage}}</li>
                                                                 </ul>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                            </div>
-                                                          </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">View Details</button>
-                                                    <br>
-                                                    <br>
-                                                    <a href="/vehicle/delete/{{vehicle.id}}"><input type="button" value="Delete" name="delete" class="btn btn-primary" id="submit"/></a>
-                                                </div>
-                                        </div>
-                                        </div>
-                                        {% endfor %}
+                                            </div>
+                                            <div class="modal-footer">
+                                              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+                                            </div>
+                                          </div>
+          
+                                      </div>
                                     </div>
+                                    {% endfor %}
+                                  </div>
+                                   
                             </div>
                         </div>
                     </div>
@@ -172,11 +162,14 @@
 </div>
 {% endif %}
     <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   
+    <script type="text/javascript">
+               
+              $(document).ready(function(){
+                $('.modal').modal();
+              });
+          
+    </script>
     <!-- Menu Toggle Script -->
     
 
