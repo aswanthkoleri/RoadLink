@@ -12,6 +12,7 @@ home/__pycache__/
 home/migrations/
 repair/__pycache__/
 repair/migrations/
+roadlink/__pycache__/
 db.sqlite3
 # Logs
 logs
