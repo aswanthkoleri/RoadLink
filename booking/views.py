@@ -34,28 +34,24 @@ def book(request):
             print('success')
             instance=form.save(commit=False)
             instance.allottedUser=request.user
-            url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' +instance.source+ ',+CA&key=AIzaSyBKmBYERZyz9Cj7-F9bT7WMWVuSHiaX9kU'
+            url='https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins='+ instance.source +'&destinations='+instance.destination+'&key=AIzaSyBKmBYERZyz9Cj7-F9bT7WMWVuSHiaX9kU';
             print(url)
             r = requests.get(url)
             results = r.json()
             print(results)
-            source_latitude = results["results"][0]["geometry"]["location"]["lat"]
-            source_longitude = results["results"][0]["geometry"]["location"]["lng"]
+            source_latitude = 1
+            source_longitude = 2
             instance.source_longitude=source_longitude
             instance.source_latitude=source_latitude
-            url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' +instance.destination+ ',+CA&key=AIzaSyBKmBYERZyz9Cj7-F9bT7WMWVuSHiaX9kU'
-            r = requests.get(url)
-            print(r)
-            print(url)
             results = r.json()
-            destination_latitude = results["results"][0]["geometry"]["location"]["lat"]
-            destination_longitude = results["results"][0]["geometry"]["location"]["lng"]
+            destination_latitude = 1
+            destination_longitude = 2
             instance.destination_longitude=destination_longitude
             instance.destination_latitude=destination_latitude
             coords_1 = (source_latitude, source_longitude)
             coords_2 = (destination_latitude, destination_longitude)
             distance=geopy.distance.vincenty(coords_1, coords_2).km
-            instance.distance=int(distance)
+            instance.distance=int(results["rows"][0]["elements"][0]["distance"]["value"]/1000)
             print(instance.distance)
             print(instance.vehicle.cost_per_km)
             instance.cost=int(float(instance.vehicle.cost_per_km)*float(instance.distance))
