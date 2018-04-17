@@ -65,6 +65,13 @@
             <img src="{% static 'logo.jpg' %}">
           </div>
         </div>
+        {% if form.errors %}
+            <div id="card-alert" class="card red lighten-5">
+                      <div class="card-content red-text">
+                        <p>Invalid Details</p>
+                      </div>
+                    </div>
+            {% endif %}
         <div class="row">
           <div class="input-field col s12">
             {% render_field form.username type="text" id="username" class="validate" %}
@@ -87,12 +94,6 @@
           <div class="input-field col s12">
             {% render_field form.email type="email" id="username" class="validate" %}
             <label for="username" class="center-align">Email</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            {% render_field form.phone type="text" id="username" class="validate" maxLength="10" %}
-            <label for="username" class="center-align">Phone</label>
           </div>
         </div>
         <div class="row">

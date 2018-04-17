@@ -19,11 +19,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 </head>
-<style>
-.nav {
-    margin-bottom: 20px;
-}
-</style>
+<style type="text/css">    .welcome{
+        background: #808080;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3fada8, #808080);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3fada8, #808080); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }</style>
 <body>
 {% if user.is_authenticated %}
 
@@ -80,14 +81,20 @@
                 <div class="row">
                     <div class="col s8 offset-s2">
                             {%if success %}
-                            <div class="alert alert-success" role="alert">
-                                    {{ success }}
-                                  </div>
+                            <div id="card-alert" class="card green lighten-5">
+                      <div class="card-content red-text">
+                        <p>{{success}}</p>
+                      </div>
+                    </div>
                             {% endif %}
                         <div class="card">
-                            <div class="card-title center">
-                                <h2>Add driver</h2>
-                            </div>
+                            <div class="col s12">
+                      <div class="welcome card-panel z-depth-3">
+                        
+                          <span style="padding-left: 38%;" class="white-text"><font color="black" size="20">Add Driver</font>
+                      </span>
+                      </div>
+                    </div>
                             <div class="card-content">
                             <form action="/driver/addDriver" method="POST">
                             {% csrf_token %}
