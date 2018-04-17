@@ -23,21 +23,29 @@
 
 </head>
 <style>
-
+    .welcome{
+        background: #808080;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3fada8, #808080);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3fada8, #808080); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
 </style>
 <body>
-{% if user.is_authenticated %}
     <div id="wrapper">
-        {% include 'driver/navbar.html' %}
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Report</h2>
+               <div class="row">
+                  <div class="col s12 m6 offset-m4 l8 offset-l2">
+                <div class="card  z-depth-5 blue-grey darken-1">
+                    <div class="col s12">
+                      <div class="welcome card-panel z-depth-3">
+                        
+                          <span style="padding-left: 40%;" class="white-text"><font color="black" size="20">Report</font>
+                      </span>
+                      </div>
                     </div>
                     {% if bookinglist %}
-                    <div class="card-body">
+                    <div style="margin-left: 5%;margin-right: 5%;" class="card-body">
                         <table class="table">
                           <thead>
                             <tr>
@@ -61,25 +69,26 @@
                           </tbody>
                         </table>
                         {% else %}
-                        <p> You do not have any valid bookings!<p>
+                        <div style="margin-left: 33%;">
+                          <p> You do not have any valid bookings!<p>
+                          </div>
                           {% endif %}
-                          <p>Total Distance Travelled : {{ totdistance }}</p>
+                          <div style="margin-left: 33%;" class="card-action">
+                            <p>Total Distance Travelled : {{ totdistance }}</p>
                           <p>Total expenditure : {{ totcost }}</p>
+
+                          </div>
                     </div>
                 </div>
             </div>
+          </div>
+        </div>
         </div>
         <!-- /#page-content-wrapper -->
 
     </div>
     <!-- /#wrapper -->
-{% else %}
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-3">You are not logged in</h1>
-    </div>
-</div>
-{% endif %}
+
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

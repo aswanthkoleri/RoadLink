@@ -18,12 +18,19 @@
     {% include 'material/includes/material_js.html' %}
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    
     <link href="{% static 'css/datatables-plugins/dataTables.bootstrap.css' %}" rel="stylesheet">
     <link href="{% static 'css/datatables-responsive/dataTables.responsive.css' %}" rel="stylesheet">
    
 
 </head>
 <style>
+    .welcome{
+        background: #808080;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3fada8, #808080);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3fada8, #808080); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
 </style>
 <body>
 {% if user.is_authenticated %}
@@ -79,9 +86,14 @@
             <div class="container-fluid">
                
                 <div class="row">
-                  
                   <div class="col s12">
-                    <h2>Drivers</h2>
+                      <div class="welcome card-panel z-depth-3">
+                        
+                          <span style="padding-left: 43%;" class="white-text"><font color="black" size="20">Drivers</font>
+                      </span>
+                      </div>
+                    </div>
+                  <div class="col s12">
                     <div style="padding-left: 5%;padding-right: 5%;padding-top: 5%;padding-bottom: 5%;" class="card z-depth-5">
                     {%if success %}
                             <div class="alert alert-success" role="alert">
@@ -119,11 +131,12 @@
                                       {% if user.is_superuser %}
                                       <td>
                                         <a href="/driver/delete/{{driver.id}}"><input type="button" value="Delete" name="delete" class="btn " id="submit"/></a>
-                                      </td>
-                                      <td>
-                                        <a href="/driver/edit/{{driver.id}}"><input type="button" value="Edit" name="edit" class="btn modal-trigger" id="submit"/></a>
-                                      </td>
+                                       </td>
+                                       <td>
+                                         <a href="/driver/edit/{{driver.id}}"><input type="button" value="Edit" name="edit" class="btn modal-trigger" id="submit"/></a>
+                                        </td>
                                       {% endif %}
+                                      
                                     </tr>
                                     {% endfor %}
                                   </tbody>
@@ -165,8 +178,6 @@
         });
     });
     </script>
-  
-  
 
 </body>
 

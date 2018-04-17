@@ -29,7 +29,12 @@
         padding-left: 40px;
         padding-right: 50px;
     }
+    .welcome{
+        background: #808080;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3fada8, #808080);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3fada8, #808080); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+    }
 </style>
 <body>
 {% if user.is_authenticated %}
@@ -85,6 +90,7 @@
             <div class="container-fluid">
                 
                 <div class="row">
+                    
                     <div class="col-md-12">
                             {%if success %}
                             <div class="alert alert-success" role="alert">
@@ -93,7 +99,13 @@
                             {% endif %}
                         <div class="card">
                             <div class="card-header">
-                                <h2>Vehicles</h2>
+                                <div class="col s12">
+                      <div class="welcome card-panel z-depth-3">
+                        
+                          <span style="padding-left: 43%;" class="white-text"><font color="black" size="20">Vehicles</font>
+                      </span>
+                      </div>
+                    </div>
                                 <!-- <form method="POST" style="margin: 0">
                                     {% csrf_token %}
                                     <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
@@ -113,8 +125,8 @@
                                         
                                         <div class="card-action">
                                           <a class="waves-effect waves-light btn modal-trigger" onclick="$('#modal1').modal('open');">More Details</a>
-                                          <a href="/vehicle/delete/{{vehicle.id}}"><button class=" btn">Delete</button></a>
-                                          <a href="/vehicle/edit/{{vehicle.id}}"><button class=" btn">edit</button></a>
+                                           <a href="/vehicle/delete/{{vehicle.id}}"><button class=" btn">Delete</button></a>
+                                       <a href="/vehicle/edit/{{vehicle.id}}"><button class=" btn">edit</button></a>
                                         </div>
                                           <!-- Modal Structure -->
                                           <div id="modal1" class="modal">

@@ -21,6 +21,12 @@
     <link href="{% static 'css/datatables-plugins/dataTables.bootstrap.css' %}" rel="stylesheet">
     <link href="{% static 'css/datatables-responsive/dataTables.responsive.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <style type="text/css">    .welcome{
+        background: #808080;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3fada8, #808080);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3fada8, #808080); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }</style>
 </head>
 <body>
 {% if user.is_authenticated %}
@@ -40,7 +46,13 @@
                                   </div>
                             {% endif %}
     
-                                <h2>Your Bookings</h2>
+                                <div class="col s12">
+                      <div class="welcome card-panel z-depth-3">
+                        
+                          <span style="padding-left: 38%;" class="white-text"><font color="black" size="20">Your Bookings</font>
+                      </span>
+                      </div>
+                    </div>
                           
                             
                                 <div class="col s12">
