@@ -1,0 +1,439 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment</title>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+<script src="https://use.fontawesome.com/aa95071b26.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<style type="text/css">#body {
+  background: #FFF;
+  min-height: 100vh;
+  font-family: 'Josefin Sans', sans-serif;
+  text-transform: captalize;
+  letter-spacing: 2px;
+}
+@media only screen and (min-width: 768px) {
+  #body {
+    padding: 50px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #body {
+    padding: 1px;
+  }
+}
+#body, #body * {
+  transition: all .25s;
+}
+#body .out-wrap {
+  position: relative;
+  width: 90%;
+  margin: auto;
+  color: #777;
+}
+@media only screen and (min-width: 768px) {
+  #body .out-wrap {
+    padding: 0 50px 50px;
+  }
+}
+#body .out-wrap #payment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media only screen and (max-width: 767px) {
+  #body .out-wrap #payment {
+    flex-wrap: wrap;
+  }
+  #body .out-wrap #payment > div {
+    margin: 15px auto !important;
+    width: 100%;
+  }
+  #body .out-wrap #payment > div:first-child {
+    order: 2;
+  }
+}
+#body .out-wrap #payment .details {
+  flex: 1;
+  max-width: 400px;
+  min-width: 300px;
+  margin-right: 50px;
+}
+#body .out-wrap #payment .details .input-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+#body .out-wrap #payment .details .input-wrap label {
+  width: 100%;
+  margin: 25px 0 10px;
+}
+#body .out-wrap #payment .details .input-wrap input {
+  flex: 1;
+  border: 0;
+  background: rgba(0, 0, 0, 0.3);
+  height: 40px;
+  width: 100%;
+  text-transform: uppercase;
+  padding: 0 10px;
+}
+#body .out-wrap #payment .details .input-wrap input:focus {
+  outline: none;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.1);
+}
+#body .out-wrap #payment .details .input-wrap.four-num input {
+  margin: 0 10px 0 0;
+  text-align: center;
+}
+#body .out-wrap #payment .details .input-wrap.four-num input:last-child {
+  margin: 0;
+}
+#body .out-wrap #payment .details .halfbox {
+  display: flex;
+}
+#body .out-wrap #payment .details .halfbox > div:last-child {
+  margin-left: 25px;
+}
+#body .out-wrap #payment .details .halfbox > div:last-child input {
+  width: 50px;
+}
+#body .out-wrap #payment .details .halfbox > div:first-child .twin {
+  position: relative;
+  display: flex;
+}
+#body .out-wrap #payment .details .halfbox > div:first-child .twin:before {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  pointer-events: none;
+  content: '/';
+  bottom: 5px;
+  font-size: 20px;
+}
+#body .out-wrap #payment .details .halfbox > div:first-child .twin.focusit {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+#body .out-wrap #payment .details .halfbox > div:first-child .twin.focusit input {
+  box-shadow: none;
+  background: rgba(0, 0, 0, 0.1);
+}
+#body .out-wrap #payment .details .halfbox > div:first-child input {
+  width: 40px;
+}
+#body .out-wrap #payment .card > div {
+  perspective: 1000px;
+  max-width: 350px;
+  height: 200px;
+  min-width: 320px;
+}
+@media only screen and (max-width: 767px) {
+  #body .out-wrap #payment .card > div {
+    margin: auto;
+  }
+}
+#body .out-wrap #payment .card.flip > div > .clayout {
+  transform: rotateY(180deg);
+}
+#body .out-wrap #payment .card.flip > div > .clayout .c-front .logo {
+  opacity: 0;
+  transition: none;
+}
+#body .out-wrap #payment .card .clayout {
+  position: relative;
+  transform-style: preserve-3d;
+}
+#body .out-wrap #payment .card .clayout.blueit .c-front, #body .out-wrap #payment .card .clayout.blueit .c-back {
+  background: linear-gradient(to right, #0af, #0099e6);
+}
+#body .out-wrap #payment .card .clayout .c-front, #body .out-wrap #payment .card .clayout .c-back {
+  max-width: 350px;
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  transform-style: preserve-3D;
+  transform-origin: center center;
+  perspective: 50px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(to right, #b71c1c, #a11919);
+  color: #fff;
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+#body .out-wrap #payment .card .clayout .c-front > p, #body .out-wrap #payment .card .clayout .c-back > p {
+  margin: 0;
+}
+#body .out-wrap #payment .card .clayout .c-front .chiplogo, #body .out-wrap #payment .card .clayout .c-back .chiplogo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+#body .out-wrap #payment .card .clayout .c-front .chiplogo > span, #body .out-wrap #payment .card .clayout .c-back .chiplogo > span {
+  height: 35px;
+  width: 150px;
+}
+#body .out-wrap #payment .card .clayout .c-front .chiplogo > span.chip b, #body .out-wrap #payment .card .clayout .c-back .chiplogo > span.chip b {
+  position: relative;
+  height: 30px;
+  width: 43px;
+  display: block;
+  border-radius: 5px;
+  background: #f3c251;
+}
+#body .out-wrap #payment .card .clayout .c-front .chiplogo > span.chip b:before, #body .out-wrap #payment .card .clayout .c-back .chiplogo > span.chip b:before {
+  background: url(https://d30y9cdsu7xlg0.cloudfront.net/png/190185-200.png) no-repeat center/100% 140%;
+  content: '';
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#body .out-wrap #payment .card .clayout .c-front .chiplogo > span.logo, #body .out-wrap #payment .card .clayout .c-back .chiplogo > span.logo {
+  transform: translate3d(0, 0, 0);
+}
+#body .out-wrap #payment .card .clayout .c-front .chiplogo > span.logo b, #body .out-wrap #payment .card .clayout .c-back .chiplogo > span.logo b {
+  width: 75px;
+  margin-left: auto;
+  display: block;
+  height: 100%;
+  background-size: auto 130% !important;
+  background-position-y: center !important;
+  transform: translateZ(0);
+}
+#body .out-wrap #payment .card .clayout .c-front .chiplogo > span.logo b.master, #body .out-wrap #payment .card .clayout .c-back .chiplogo > span.logo b.master {
+  background: url(https://new.corezoid.com/wp-content/uploads/2016/03/visa-mastercard.png) no-repeat;
+  background-position-x: 10px;
+}
+#body .out-wrap #payment .card .clayout .c-front .chiplogo > span.logo b.visa, #body .out-wrap #payment .card .clayout .c-back .chiplogo > span.logo b.visa {
+  background: url(https://new.corezoid.com/wp-content/uploads/2016/03/visa-mastercard.png) no-repeat;
+  background-position-x: -60px;
+}
+#body .out-wrap #payment .card .clayout .c-front .chiplogo > span:last-child, #body .out-wrap #payment .card .clayout .c-back .chiplogo > span:last-child {
+  text-align: right;
+}
+#body .out-wrap #payment .card .clayout .c-front .cnum, #body .out-wrap #payment .card .clayout .c-back .cnum {
+  margin: 20px 0;
+  font-size: 20px;
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  font-family: monospace;
+}
+#body .out-wrap #payment .card .clayout .c-front .cnum span, #body .out-wrap #payment .card .clayout .c-back .cnum span {
+  letter-spacing: 5px;
+  font-family: 'Josefin Sans', sans-serif;
+  flex: 1;
+  text-align: center;
+}
+#body .out-wrap #payment .card .clayout .c-front .cname, #body .out-wrap #payment .card .clayout .c-front .cvtr, #body .out-wrap #payment .card .clayout .c-back .cname, #body .out-wrap #payment .card .clayout .c-back .cvtr {
+  min-height: 35px;
+  max-width: 215px;
+  overflow: hidden;
+}
+#body .out-wrap #payment .card .clayout .c-front .cname > span, #body .out-wrap #payment .card .clayout .c-front .cvtr > span, #body .out-wrap #payment .card .clayout .c-back .cname > span, #body .out-wrap #payment .card .clayout .c-back .cvtr > span {
+  display: block;
+  font-size: 8px;
+  color: #ccc;
+}
+#body .out-wrap #payment .card .clayout .c-front .cname label, #body .out-wrap #payment .card .clayout .c-front .cvtr label, #body .out-wrap #payment .card .clayout .c-back .cname label, #body .out-wrap #payment .card .clayout .c-back .cvtr label {
+  text-transform: uppercase;
+}
+#body .out-wrap #payment .card .clayout .c-front .cvtr, #body .out-wrap #payment .card .clayout .c-back .cvtr {
+  text-align: center;
+}
+#body .out-wrap #payment .card .clayout .c-back {
+  padding: 0;
+  align-items: initial;
+  z-index: 1;
+  transform: rotateY(180deg);
+}
+#body .out-wrap #payment .card .clayout .c-back .topc {
+  line-height: 20px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.5);
+}
+#body .out-wrap #payment .card .clayout .c-back .backit {
+  height: 35px;
+  background: #333;
+  width: 100%;
+}
+#body .out-wrap #payment .card .clayout .c-back .cvv {
+  margin: 0 30px;
+  width: 100%;
+  text-align: right;
+}
+#body .out-wrap #payment .card .clayout .c-back .cvv b {
+  border-radius: 5px;
+  line-height: 25px;
+  height: 25px;
+  margin-top: 5px;
+  padding-right: 5px;
+  background: #fff;
+  display: block;
+  color: #000;
+}
+#body .out-wrap #payment .card .clayout .c-back .chiplogo {
+  margin: 0 15px 30px 0;
+  justify-content: flex-end;
+}
+
+.four-num, .cnum {
+  font-family: 'roboto' !important;
+}
+</style>
+{% include 'material/includes/material_css.html' %}
+    <script src="{% static 'material/js/jquery.js' %}"></script>
+    {% include 'material/includes/material_js.html' %}
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+</head>
+<body>
+{% include 'driver/navbar.html' %}
+<div id="body">
+  <div class="out-wrap">
+    <h1 style="padding-left: 10%;" class="text-center">Enter Card Details</h1>
+    <div id="payment" ng-app="myApp" ng-controller="myCtrl">
+      <div class="details">
+        <div class="input-wrap four-num">
+          <label>Card Number</label>
+          <input maxlength="4" ng-model="f4" type="text">
+          <input maxlength="4" ng-model="s4" type="text">
+          <input maxlength="4" ng-model="t4" type="text">
+          <input maxlength="4" ng-model="l4" type="text">
+        </div>
+        <div class="input-wrap">
+          <label>Card Holder's Name </label>
+          <input ng-model="hname" type="text">
+        </div>
+        <div class="halfbox">
+        <div class="input-wrap">
+          <label>Valid Till</label>
+          <div class="twin">
+          <input maxlength="2" ng-model="edm" type="text">
+          <input maxlength="2" ng-model="edy" type="text">
+          </div>
+        </div>
+        
+        <div class="input-wrap">
+          <label>CVV</label>
+          <input maxlength="3" ng-model="cvv" type="text">
+        </div>
+      </div>
+      </div>
+      <div class="card">
+        <div>
+        <div class="clayout">
+          <div class="c-front">
+          <p class="chiplogo">
+            <span class="chip">
+              <b></b></span>
+            <span class="logo">
+            <b class="master"></b>
+            </span>
+            </p>
+          <p class="cnum">
+            <span ng-bind="f4">XXXX</span> - <span ng-bind="s4">XXXX</span> - <span ng-bind="t4">XXXX</span> - <span ng-bind="l4">XXXX</span> 
+            </p>
+            <P class="cname"><span>Card Holder</span><label ng-bind="hname">PRAVEEN KUMAR GORAKALA</label></P>
+            <P  class="cvtr"><span>Valid Till</span><label ng-bind="edm">01</label> / <label ng-bind="edy">28</label></P>
+            </div>
+          <div class="c-back">
+            <p class="topc"><span>136589420</span><span>sddv5</span></p>
+            <p class="backit"></p>
+            <p class="cvv"><span>CVV</span><b ng-bind="cvv"></b></p>
+          <p class="chiplogo">
+          <span class="logo">
+            <b class="master"></b>
+            </span>
+            </p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+ <script type="text/javascript">
+   var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+            $scope.f4 = "";
+            $scope.s4 = "";
+            $scope.t4 = "";
+            $scope.l4 = "";
+            $scope.hname = "";
+            $scope.edm = "";
+            $scope.edy = "";
+            $scope.cvv = "";
+        });
+
+$('.twin input').on('focus', function(){
+  $(this).parent().addClass('focusit');
+}).blur(function(){
+  $(this).parent().removeClass('focusit');
+});
+
+
+$('.four-num input[ng-model="f4"]').on('keyup change', function(){
+if($(this).val().slice(0,1) === "4"){
+  $('.logo b').attr('class','visa');
+  $('.clayout').addClass('blueit');
+}else{
+    $('.logo b').attr('class','master');
+  $('.clayout').removeClass('blueit');
+  };
+});
+$('.four-num input').on('keyup change', function(){
+  $in = $(this);
+    if ($in.val().length > 3) {
+      $in.next().focus();
+    };  
+ });
+$('input[ng-model="cvv"]').on('focus', function(){
+  $('#payment .card').addClass('flip');
+}).on('blur', function(){
+  $('#payment .card').removeClass('flip');
+});
+  $('.twin input').on('keyup change', function(){
+  $in = $(this);
+  if($in.next().length){
+    if ($in.val().length > 1) {
+      $in.next().focus();
+    };
+  }
+  else{
+    if ($in.val().length > 1) {
+      $in.blur();
+    }
+  }
+ });
+  
+
+ </script>
+</body>
+</html>

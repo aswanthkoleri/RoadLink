@@ -21,6 +21,12 @@ def index(request):
     else:
         return redirect("http://localhost:8000/home/404")
 
+def pay(request):
+    if request.user.is_authenticated:
+        return render(request,'booking/payment.html')
+    else:
+        return redirect("http://localhost:8000/home/404")
+
 def book(request):
     if request.POST:
         form=BookForm(request.POST)
