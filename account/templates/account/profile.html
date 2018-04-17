@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,20 +74,43 @@ background: linear-gradient(to right, #3fada8, #808080); /* W3C, IE 10+/ Edge, F
                                                 <li class="collection-item"><h5><span class="teal-text">Email </span>: {{user.email}}</h5></li>
                                     </ul>
                                     <div class="row center">
-                                        <a href="#modal1" class="waves-effect waves-light btn-large modal-trigger">Edit</a>
+                                        <a href="#modal1" class="btn-large modal-trigger">Edit</a>
                                         <div id="modal1" class="modal">
                                                 <div class="modal-content left-align">
                                                   <h4>Modal Header</h4>
-                                                  <form method="POST" action="/account/profile">
+                                                  <form method="POST" action="/account/edit">
                                                 {%csrf_token%}
-                                                {{form}}
+                                                <div class="row">
+          <div class="input-field col s12">
+            {% render_field form.username type="text" id="username" class="validate" %}
+            <label for="username" class="center-align">Username</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            {% render_field form.first_name type="text" id="username" class="validate" %}
+            <label for="username" class="center-align">First Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            {% render_field form.last_name type="text" id="username" class="validate" %}
+            <label for="username" class="center-align">Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            {% render_field form.email type="email" id="username" class="validate" %}
+            <label for="username" class="center-align">Email</label>
+          </div>
+        </div>
                                                 <div class="col s12 center">
-                                                        <input type="submit" class="waves-effect waves-light btn-large" value="Update">
+                                                        <input type="submit" class="btn-large" value="Update">
                                                     </div>
                                                 </form>
                                                 </div>
                                                 <div class="modal-footer">
-                                                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                                                  <a href="#!" class="modal-action modal-close btn-flat">Close</a>
                                                 </div>
                                               </div
                                     </div>

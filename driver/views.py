@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from django.http import Http404
 from django.template import loader
@@ -50,3 +50,17 @@ def delete(request,id):
             return redirect('http://localhost:8000/driver/drivers')
         else:
             return redirect("http://localhost:8000/home/404")
+
+def edit(request,id):
+    if request.method == "POST":
+        driver=Driver.objects.get(id=id)
+        form=DriverForm(request.POST,instance=driver)
+        if form.is_valid():
+            form.save()
+            return redirect('http://localhost:8000/driver/drivers')
+    elif request.user.is_authenticated:
+        driver=Driver.objects.get(id=id)
+        form=DriverForm(instance=driver)
+        return render(request,'driver/driverEdit.html',{ 'form' : form ,'id':id})
+    
+        

@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm,UserChangeForm
 from django.contrib.auth import login,logout
-from account.forms import RegistrationForm
+from account.forms import RegistrationForm,editForm
 from django.contrib.auth.models import User
 
 def signup(request):
@@ -33,13 +33,19 @@ def logoutView(request):
 def profileView(request):
     if request.user.is_authenticated:
         user=request.user
-        form=RegistrationForm(instance=user)
+        print(user)
+        print("Get")
+        form=editForm(instance=user)
         args = { 'user' : request.user,'form' : form}
+        print(form)
         return render(request,'account/profile.html',args)
     else:
         return redirect("http://localhost:8000/home/404")
+
+def editView(request):
     if request.method == "POST":
-        form=RegistrationForm(request.POST,instance=user)
+        print("POST")
+        form=editForm(request.POST,instance=request.user)
         if form.is_valid():
             form.save()
             return redirect('account:profile')

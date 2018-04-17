@@ -10,25 +10,25 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Drivers</title>
+    <title>Add driver</title>
 
-    <!-- Bootstrap core CSS -->
     {% include 'material/includes/material_css.html' %}
     <script src="{% static 'material/js/jquery.js' %}"></script>
     {% include 'material/includes/material_js.html' %}
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <link href="{% static 'css/datatables-plugins/dataTables.bootstrap.css' %}" rel="stylesheet">
-    <link href="{% static 'css/datatables-responsive/dataTables.responsive.css' %}" rel="stylesheet">
-   
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 </head>
 <style>
+.nav {
+    margin-bottom: 20px;
+}
 </style>
 <body>
 {% if user.is_authenticated %}
-    <div id="wrapper">
+
         {% include 'driver/navbar.html' %}
+        <!-- Sidebar -->
         <!-- Sidebar -->
         <!--<div id="sidebar-wrapper">
             <ul class="sidebar-nav">
@@ -77,59 +77,30 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-               
                 <div class="row">
-                  
-                  <div class="col s12">
-                    <h2>Drivers</h2>
-                    <div style="padding-left: 5%;padding-right: 5%;padding-top: 5%;padding-bottom: 5%;" class="card z-depth-5">
-                    {%if success %}
+                    <div class="col s8 offset-s2">
+                            {%if success %}
                             <div class="alert alert-success" role="alert">
                                     {{ success }}
                                   </div>
                             {% endif %}
-                                <table id="dataTables-example" class="table table-striped table-bordered table-hover">
-                                   <thead>
-                                    <tr>
-                                      <!-- <th scope="col">#</th> -->
-                                      <th scope="col">First Name</th>
-                                      <th scope="col">Last Name</th>
-                                      <th scope="col">National ID</th>
-                                      <th scope="col">Email</th>
-                                      <th scope="col">Contact</th>
-                                      <th scope="col">License Category</th>
-                                      <th scope="col">Address</th>
-                                      {% if user.is_superuser %}
-                                      <th scope="col">Delete</th>
-                                      <th scope="col">Edit</th>
-                                      {% endif %}
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    {% for driver in drivers %}
-                                    <tr>
-                                      <!-- <th scope="row"></th> -->
-                                      <td>{{driver.firstName}}</td>
-                                      <td>{{driver.lastName}}</td>
-                                      <td>{{driver.nationalId}}</td>
-                                      <td>{{driver.email}}</td>
-                                      <td>{{driver.phoneNumber}}</td>
-                                      <td>{{driver.licenseCategory}}</td>
-                                      <td>{{driver.address}}</td>
-                                      {% if user.is_superuser %}
-                                      <td>
-                                        <a href="/driver/delete/{{driver.id}}"><input type="button" value="Delete" name="delete" class="btn " id="submit"/></a>
-                                      </td>
-                                      <td>
-                                        <a href="/driver/edit/{{driver.id}}"><input type="button" value="Edit" name="edit" class="btn modal-trigger" id="submit"/></a>
-                                      </td>
-                                      {% endif %}
-                                    </tr>
-                                    {% endfor %}
-                                  </tbody>
-                              </table>
+                        <div class="card">
+                            <div class="card-title center">
+                                <h2>Add driver</h2>
                             </div>
-                   </div>
+                            <div class="card-content">
+                            <form action="/driver/edit/{{id}}" method="POST">
+                            {% csrf_token %}
+                            {{ form }}
+                            <div class="row">
+                                    <div class="col s4 offset-s4 center">
+                                        <input type="submit" class=" btn-large" value="Add">
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -150,23 +121,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
-     <script src="{% static 'css/datatables/js/jquery.dataTables.min.js' %}"></script>
-    <script src="{% static 'css/datatables-plugins/dataTables.bootstrap.min.js' %}"></script>
-    <script src="{% static 'css/datatables-responsive/dataTables.responsive.js' %}"></script>
     <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true
-        });
-    });
     </script>
-  
-  
 
 </body>
 
