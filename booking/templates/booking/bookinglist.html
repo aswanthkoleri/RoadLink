@@ -100,7 +100,6 @@ background: linear-gradient(to right, #3fada8, #808080); /* W3C, IE 10+/ Edge, F
                                           <td><input type="button" value="Book" name="Book" class="btn btn-primary" id="submit" disabled/></a></td>
                                         {% endif %}
                                       {% endif %}
-<<<<<<< HEAD
                                       <td><a href="#map{{item.id}}" class="btn modal-trigger">Map</a>
                                         <div id="map{{item.id}}" class="modal">
                                                 <div class="modal-content">
@@ -117,24 +116,6 @@ background: linear-gradient(to right, #3fada8, #808080); /* W3C, IE 10+/ Edge, F
                                                 </div>
                                               </div>
                                     </td>
-=======
-                                      <td><a href="#map" class="btn modal-trigger">Map</a>
-                                         <div id="map" class="modal">
-                                                 <div class="modal-content">
-                                                   <h4>The route</h4>
-                                                   <iframe
-                                                   width="100%"
-                                                   height="350"
-                                                   frameborder="0" style="border:0"
-                                                   src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBOMPDZcYa9AWzWJf4mTeCj2CTvzu-gMq8&origin={{iteme.source}}&destination={{iteme.destination}}&avoid=tolls|highways" allowfullscreen>
-                                                 </iframe>
-                                                 </div>
-                                                 <div class="modal-footer">
-                                                   <a href="#!" class="modal-action modal-close  btn-flat teal">Close</a>
-                                                 </div>
-                                               </div>
-                                     </td>
->>>>>>> a885c295c3afbcafbdcece49d857faf26d3e5901
                                     </tr>
                                     {% endfor %}
                                 </tbody>
