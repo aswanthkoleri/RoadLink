@@ -1,0 +1,79 @@
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% load material_form %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Repair</title>
+
+    {% include 'material/includes/material_css.html' %}
+    <script src="{% static 'material/js/jquery.js' %}"></script>
+    {% include 'material/includes/material_js.html' %}
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+</head>
+<style>
+
+</style>
+<body>
+{% if user.is_authenticated %}
+
+        {% include 'driver/navbar.html' %}
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col s8 offset-s2">
+                            {%if success %}
+                            <div class="alert alert-success" role="alert">
+                                    {{ success }}
+                                  </div>
+                            {% endif %}
+                        <div class="card">
+                            <div class="card-title center">
+                                <h2>Register Issue</h2>
+                            </div>
+                            <div class="card-content">
+                            <form action="/repair/edit/{{id}}" method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <div class="row">
+                                    <div class="col s4 offset-s4 center">
+                                        <input type="submit" class=" btn-large" value="Add">
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+{% else %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-3">You are not logged in</h1>
+    </div>
+</div>
+{% endif %}
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <!-- Menu Toggle Script -->
+  
+</body>
+
+</html>

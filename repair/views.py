@@ -72,3 +72,16 @@ def update(request,id):
             return redirect('http://localhost:8000/repair/issues')
         else:
             return redirect("http://localhost:8000/home/404")
+
+def edit(request,id):
+    if request.method == "POST":
+        repair=Repair.objects.get(id=id)
+        form=RepairForm(request.POST,instance=repair)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            return redirect('http://localhost:8000/repair/issues')
+    elif request.user.is_authenticated:
+        repair=Repair.objects.get(id=id)
+        form=RepairForm(instance=repair)
+        return render(request,'repair/repairEdit.html',{ 'form' : form ,'id':id})

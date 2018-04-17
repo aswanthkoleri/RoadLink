@@ -102,6 +102,7 @@
                                       <th scope="col">User</th>
                                       <th scope="col">Vehicle</th>
                                       <th scope="col">Update</th>
+                                      <th scope="col">Edit</th>
                                     </tr>
                                   </thead>
                                   <tbody>
@@ -118,6 +119,9 @@
                                         {% else %}
                                             <a href="/repair/update/{{issue.id}}"><input type="button" value="Unsolve" name="update" class="btn btn-primary" id="submit"/></a>
                                         {% endif %}
+                                      </td>
+                                      <td>
+                                            <a href="/repair/edit/{{issue.id}}"><input type="button" value="Edit" name="update" class="btn btn-primary" id="submit"/></a>
                                       </td>
                                     </tr>
                                     {% endfor %}

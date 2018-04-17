@@ -35,7 +35,7 @@ def showVehicles(request):
         vehiclesList = Vehicle.objects.filter(registration_plate=search_query)
         return render(request,'vehicle/vehiclelist.html',{ 'vehiclesList' : vehiclesList})
     elif request.method=='POST' and 'viewallb' in request.POST: 
-        vehiclesList = Vehicle.objects.all()   
+        vehiclesList = Vehicle.objects.all()
         return render(request,'vehicle/vehiclelist.html',{ 'vehiclesList' : vehiclesList})
     else:
         if request.user.is_authenticated:
@@ -64,3 +64,16 @@ def delete(request,id):
             return redirect('http://localhost:8000/vehicle/vehicles')
         else:
             return redirect("http://localhost:8000/home/404")
+
+def edit(request,id):
+    if request.method == "POST":
+        vehicle=Vehicle.objects.get(id=id)
+        form=VehicleForm(request.POST,request.FILES,instance=vehicle)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            return redirect('http://localhost:8000/vehicle/vehicles')
+    elif request.user.is_authenticated:
+        vehicle=Vehicle.objects.get(id=id)
+        form=VehicleForm(instance=vehicle)
+        return render(request,'vehicle/vehicleEdit.html',{ 'form' : form ,'id':id})
