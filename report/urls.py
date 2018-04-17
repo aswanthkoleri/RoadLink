@@ -3,5 +3,6 @@ from . import views
 
 app_name='report'
 urlpatterns = [
-    path('', views.index,name='index')
+    path('mail',views.change,name='delete'),
+    path('', views.index,name='index'),
 ]
