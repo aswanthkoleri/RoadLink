@@ -38,20 +38,8 @@ def book(request):
             print(url)
             r = requests.get(url)
             results = r.json()
-            print(results)
-            source_latitude = 1
-            source_longitude = 2
-            instance.source_longitude=source_longitude
-            instance.source_latitude=source_latitude
-            results = r.json()
-            destination_latitude = 1
-            destination_longitude = 2
-            instance.destination_longitude=destination_longitude
-            instance.destination_latitude=destination_latitude
-            coords_1 = (source_latitude, source_longitude)
-            coords_2 = (destination_latitude, destination_longitude)
-            distance=geopy.distance.vincenty(coords_1, coords_2).km
             instance.distance=int(results["rows"][0]["elements"][0]["distance"]["value"]/1000)
+            instance.duration=results["rows"][0]["elements"][0]["duration"]["text"]
             print(instance.distance)
             print(instance.vehicle.cost_per_km)
             instance.cost=int(float(instance.vehicle.cost_per_km)*float(instance.distance))

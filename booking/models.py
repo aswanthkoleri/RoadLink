@@ -8,11 +8,7 @@ from driver.models import Driver
 class Book(models.Model):
     source=models.CharField(max_length=100)
     destination=models.CharField(max_length=100)
-    source_latitude=models.DecimalField(max_digits=20,default=0,decimal_places=2)
-    source_longitude=models.DecimalField(max_digits=20,default=0,decimal_places=2)
-    destination_latitude=models.DecimalField(max_digits=20,default=0,decimal_places=2)
     distance=models.DecimalField(max_digits=20,default=0,decimal_places=2)
-    destination_longitude=models.DecimalField(max_digits=20,default=0,decimal_places=2)
     bookingDate=models.DateTimeField(default=timezone.now)
     startDate=models.DateTimeField("Start date ")
     endDate=models.DateTimeField("end date ")
@@ -32,5 +28,6 @@ class Book(models.Model):
     allottedDriver=models.ForeignKey(Driver,null=True,blank=True,on_delete=models.CASCADE)
     vehicle=models.ForeignKey(Vehicle,on_delete=models.CASCADE)
     cost=models.FloatField()
+    duration=models.CharField(max_length=100,default="Error")
     def __str__(self):
         return 'source : '+self.source
