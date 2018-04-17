@@ -34,7 +34,15 @@ def book(request):
             print('success')
             instance=form.save(commit=False)
             instance.allottedUser=request.user
-            url='https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins='+ instance.source +'&destinations='+instance.destination+'&key=AIzaSyBKmBYERZyz9Cj7-F9bT7WMWVuSHiaX9kU';
+            source=instance.source
+            source=source.replace(" ","+")
+            instance.source=source
+            print(instance.source)
+            destination=instance.destination
+            destination=destination.replace(" ","+")
+            instance.destination=destination
+            print(instance.destination)
+            url='https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins='+source +'&destinations='+destination+'&key=AIzaSyBKmBYERZyz9Cj7-F9bT7WMWVuSHiaX9kU';
             print(url)
             r = requests.get(url)
             results = r.json()
