@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Add driver</title>
+    <title>Report</title>
 
     <!-- Bootstrap core CSS -->
     {% include 'material/includes/material_css.html' %}
@@ -30,6 +30,7 @@ background: linear-gradient(to right, #3fada8, #808080); /* W3C, IE 10+/ Edge, F
     }
 </style>
 <body>
+  {% include 'driver/navbar.html' %}
     <div id="wrapper">
         <!-- Page Content -->
         <div id="page-content-wrapper">
@@ -76,7 +77,7 @@ background: linear-gradient(to right, #3fada8, #808080); /* W3C, IE 10+/ Edge, F
                           <div style="margin-left: 33%;" class="card-action">
                             <p>Total Distance Travelled : {{ totdistance }}</p>
                           <p>Total expenditure : {{ totcost }}</p>
-
+                          <a href="/report/mail"><input type="button" value="Get report as mail" name="Book" class="btn btn-primary" id="submit"/></a>
                           </div>
                     </div>
                 </div>
