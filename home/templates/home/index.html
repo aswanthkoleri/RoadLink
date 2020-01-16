@@ -1,178 +1,245 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Road Link </title>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Road Link</title>
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <style>
-  nav {
-    background: #808080;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #3fada8, #808080);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #3fada8, #808080);
-  }
-  </style>
-</head>
-<body>
-  <nav class="white" role="navigation">
-    <div class="nav-wrapper container ">
-      <a id="logo-container" href="#" class="brand-logo white-text"><font color="black">Road</font> Link</a>
-      <ul class="right hide-on-med-and-down ">
-       <!--  <li><a href="#" class="white-text">Navbar Link</a></li> -->
-      </ul>
+    <!-- CSS  -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"
+    />
+    <link
+      href="{% static 'css/style.css' %}"
+      type="text/css"
+      rel="stylesheet"
+      media="screen,projection"
+    />
+    <style>
+      nav {
+        background: #808080; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to right,
+          #3fada8,
+          #808080
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #3fada8, #808080);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="white" role="navigation">
+      <div class="nav-wrapper container ">
+        <a id="logo-container" href="#" class="brand-logo white-text"
+          ><font color="black">Road</font> Link</a
+        >
+        <ul class="right hide-on-med-and-down ">
+          <!--  <li><a href="#" class="white-text">Navbar Link</a></li> -->
+        </ul>
 
-      <ul id="nav-mobile" class="sidenav">
-       <!--  <li><a href="#">Navbar Link</a></li> -->
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
-
-  <div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <br><br>
-        <h1 class="header center teal-text text-lighten-2"><font color="black">Road</font> Link</h1>
-        <div class="row center">
-          <h5 class="header col s12 light center">A solution to all the vehicle management problem ! </h5>
-        </div>
-        <div class="row center">
-          <a href="/login" id="download-button" class="btn-large teal lighten-1">Login</a>&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-          <a href="/signup" id="download-button" class="btn-large teal lighten-1">Signup</a>
-        </div>
-        <br><br>
-
+        <ul id="nav-mobile" class="sidenav">
+          <!--  <li><a href="#">Navbar Link</a></li> -->
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"
+          ><i class="material-icons">menu</i></a
+        >
       </div>
-    </div>
-    <div class="parallax"><img src="{% static 'background1.jpg' %}" alt="Unsplashed background img 1"></div>
-  </div>
+    </nav>
 
-
-  <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up process</h5>
-
-            <p class="light">Road Link allows you to vehicle management in lightning fast speed with a very high efficiency.Road Link is developed in such a way that it can serve all your needs with very high speed</p>
+    <div id="index-banner" class="parallax-container">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <br /><br />
+          <h1 class="header center teal-text text-lighten-2">
+            <font color="black">Road</font> Link
+          </h1>
+          <div class="row center">
+            <h5 class="header col s12 light center">
+              A solution to all the vehicle management problem !
+            </h5>
           </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">User experience is made as simple as possible in Road link for easy use for the users. Every module is created in such a way that it does not create any sort of confusion in the mind of the user making it more user-friendly for the user.</p>
+          <div class="row center">
+            <a
+              href="account/login"
+              id="download-button"
+              class="btn-large teal lighten-1"
+              >Login</a
+            >&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <a
+              href="account/signup"
+              id="download-button"
+              class="btn-large teal lighten-1"
+              >Signup</a
+            >
           </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Road Link.</p>
-          </div>
+          <br /><br />
         </div>
       </div>
-
-    </div>
-  </div>
-
-
-  <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 light center">Road Link allows you to find the most efficient routes for your trips.</h5>
-        </div>
+      <div class="parallax">
+        <img
+          src="{% static 'background1.jpg' %}"
+          alt="Unsplashed background img 1"
+        />
       </div>
     </div>
-    <div class="parallax"><img src="{% static 'background2.jpg' %}"" alt="Unsplashed background img 2"></div>
-  </div>
 
-  <div class="container">
-    <div class="section">
-
-      <div class="row">
-        <div class="col s12 center">
-          <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Contact Us</h4>
-          <h5 class="left-align light">You can drop Email to us at anytime : </h5>
-          <div class="row">
-          <div class="col s4">
-          <h5 class="left-align center">Aswanth : iit2016105@iiita.ac.in </h5>
-        </div>
-        <div class="col s4">
-          <h5 class="left-align center">Aswin : iit2016106@iiita.ac.in</h5>
-        </div>
-          <div class="col s4">
-          <h5 class="left-align center">Druval : bim2016501@iiita.ac.in </h5>
-        </div>
-
-        </div>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-
-  <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 light">A modern vehicle management system that can serve all you needs</h5>
-        </div>
-      </div>
-    </div>
-    <div class="parallax"><img src="{% static 'background3.jpg' %}"" alt="Unsplashed background img 3"></div>
-  </div>
-
-  <footer class="page-footer teal">
     <div class="container">
-      <div class="row">
-        <div class="col l9 s12">
-          <h5 class="white-text">Road Link Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+      <div class="section">
+        <!--   Icon Section   -->
+        <div class="row">
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center brown-text">
+                <i class="material-icons">flash_on</i>
+              </h2>
+              <h5 class="center">Speeds up process</h5>
 
+              <p class="light">
+                Road Link allows you to vehicle management in lightning fast
+                speed with a very high efficiency.Road Link is developed in such
+                a way that it can serve all your needs with very high speed
+              </p>
+            </div>
+          </div>
 
-        </div>
-        
-        <div class="col l3 s12">
-          <h5 class="white-text">Developed by</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Aswanth</a></li>
-            <li><a class="white-text" href="#!">Aswin</a></li>
-            <li><a class="white-text" href="#!">Druval</a></li>
-            
-          </ul>
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center brown-text">
+                <i class="material-icons">group</i>
+              </h2>
+              <h5 class="center">User Experience Focused</h5>
+
+              <p class="light">
+                User experience is made as simple as possible in Road link for
+                easy use for the users. Every module is created in such a way
+                that it does not create any sort of confusion in the mind of the
+                user making it more user-friendly for the user.
+              </p>
+            </div>
+          </div>
+
+          <div class="col s12 m4">
+            <div class="icon-block">
+              <h2 class="center brown-text">
+                <i class="material-icons">settings</i>
+              </h2>
+              <h5 class="center">Easy to work with</h5>
+
+              <p class="light">
+                We have provided detailed documentation as well as specific
+                examples to help new users get started. We are also always open
+                to feedback and can answer any questions a user may have about
+                Road Link.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="footer-copyright">
+
+    <div class="parallax-container valign-wrapper">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <div class="row center">
+            <h5 class="header col s12 light center">
+              Road Link allows you to find the most efficient routes for your
+              trips.
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="parallax">
+        <img src="{% static 'background2.jpg' %}"" alt="Unsplashed background
+        img 2">
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="section">
+        <div class="row">
+          <div class="col s12 center">
+            <h3><i class="mdi-content-send brown-text"></i></h3>
+            <h4>Contact Us</h4>
+            <h5 class="left-align light">
+              You can drop Email to us at anytime :
+            </h5>
+            <div class="row">
+              <div class="col s4">
+                <h5 class="left-align center">
+                  Aswanth : iit2016105@iiita.ac.in
+                </h5>
+              </div>
+              <div class="col s4">
+                <h5 class="left-align center">
+                  Aswin : iit2016106@iiita.ac.in
+                </h5>
+              </div>
+              <div class="col s4">
+                <h5 class="left-align center">
+                  Druval : bim2016501@iiita.ac.in
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="parallax-container valign-wrapper">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <div class="row center">
+            <h5 class="header col s12 light">
+              A modern vehicle management system that can serve all you needs
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="parallax">
+        <img src="{% static 'background3.jpg' %}"" alt="Unsplashed background
+        img 3">
+      </div>
+    </div>
+
+    <footer class="page-footer teal">
       <div class="container">
-      Made by <a class="brown-text text-lighten-3" href="">Road Link team</a>
+        <div class="row">
+          <div class="col l9 s12">
+            <h5 class="white-text">Road Link Bio</h5>
+            <p class="grey-text text-lighten-4">
+              We are a team of college students working on this project like
+              it's our full time job. Any amount would help support and continue
+              development on this project and is greatly appreciated.
+            </p>
+          </div>
+
+          <div class="col l3 s12">
+            <h5 class="white-text">Developed by</h5>
+            <ul>
+              <li><a class="white-text" href="#!">Aswanth</a></li>
+              <li><a class="white-text" href="#!">Aswin</a></li>
+              <li><a class="white-text" href="#!">Druval</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
+      <div class="footer-copyright">
+        <div class="container">
+          Made by
+          <a class="brown-text text-lighten-3" href="">Road Link team</a>
+        </div>
+      </div>
+    </footer>
 
-
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="{% static 'js/materialize.js' %}"></script>
-  <script src="{% static 'js/init.js' %}"></script>
-
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="{% static 'js/materialize.js' %}"></script>
+    <script src="{% static 'js/init.js' %}"></script>
   </body>
 </html>
