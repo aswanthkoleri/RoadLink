@@ -16,7 +16,7 @@ class Book(models.Model):
     status_CHOICES=(
         ('B','booked'),
         ('NB','not booked'),
-        ('E','expired')
+        ('S','scaduto')
     )
     status=models.CharField(
         max_length=2,
