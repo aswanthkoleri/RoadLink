@@ -57,20 +57,20 @@ background: linear-gradient(to right, #3fada8, #808080); /* W3C, IE 10+/ Edge, F
                                   <thead>
                                     <tr>
                                     {% if user.is_superuser %}
-                                    <th>Username</th>
+                                    <th>Nome</th>
                                       {% endif %}
-                                      <th>Status</th>
-                                      <th>Start Date</th>
-                                      <th>End Date</th>
-                                      <th>Source</th>
-                                      <th>Destination</th>
+                                      <th>Stato</th>
+                                      <th>Data Iniziale</th>
+                                      <th>Data Finale</th>
+                                      <th>Partenza</th>
+                                      <th>Destinazione</th>
                                       <th>Distance</th>
-                                       <th>Duration</th>
-                                      <th>Delete</th>
+                                       <th>Durata</th>
+                                      <th>Cancella</th>
                                       {% if user.is_superuser %}
-                                        <th scope="col">Change Status</th>
+                                        <th scope="col">Cambia Stato</th>
                                       {% endif %}
-                                      <th>Map</th>
+                                      <th>Mappa</th>
                                     </tr>
                                 </thead>
                                 <tbody>
