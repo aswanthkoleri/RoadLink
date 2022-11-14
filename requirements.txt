@@ -12,6 +12,7 @@ django-debug-toolbar
 django-material==1.11.3
 django-widget-tweaks==1.4.12
 geopy==2.2.0
+gunicorn
 html5lib==1.1
 idna==3.4
 isort==5.10.1
