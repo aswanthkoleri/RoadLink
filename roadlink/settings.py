@@ -55,6 +55,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', #new da mettere sempre subito dopo Security Middelware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,8 +133,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"] # new
-STATIC_ROOT = BASE_DIR / "staticfiles" # new
+STATICFILES_DIRS =(os.path.join(BASE_DIR, 'static'),)# new
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new
 
 MEDIA_URL = 'roadlink/media/'
 
