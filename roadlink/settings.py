@@ -135,6 +135,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static')]# new
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage" #new
 
 MEDIA_URL = 'roadlink/media/'
 
