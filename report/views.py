@@ -6,7 +6,7 @@ from django.template.loader import render_to_string
 
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
-from weasyprint import HTML
+# from weasyprint import HTML
 from booking.models import Book
 # Create your views here.
 def index(request):
