@@ -30,7 +30,6 @@ six==1.16.0
 sqlparse==0.4.3
 tinycss2==1.2.1
 urllib3==1.26.12
-WeasyPrint
 webencodings==0.5.1
 wrapt==1.14.1
 wagtail
