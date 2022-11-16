@@ -1,0 +1,143 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Thin.f17f4d4b4628.eot");
+  src: local("Roboto Thin"), local("Roboto-Thin"),
+    url("fonts/Roboto-Thin.f17f4d4b4628.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-Thin.2d4eb9e2f70c.woff2") format("woff2"),
+    url("fonts/Roboto-Thin.aaaf3a142507.woff") format("woff"),
+    url("fonts/Roboto-Thin.0cef55e5d655.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Regular.e9f9bb75a194.eot");
+  src: local("Roboto"), local("Roboto-Regular"),
+    url("fonts/Roboto-Regular.e9f9bb75a194.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-Regular.080c52675a25.woff2") format("woff2"),
+    url("fonts/Roboto-Regular.42e500897b2b.woff") format("woff"),
+    url("fonts/Roboto-Regular.06fa080f833c.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-MediumItalic.ca68a2ae1024.eot");
+  src: local("Roboto Medium Italic"), local("Roboto-MediumItalic"),
+    url("fonts/Roboto-MediumItalic.ca68a2ae1024.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-MediumItalic.154a56475655.woff2") format("woff2"),
+    url("fonts/Roboto-MediumItalic.4311bc428886.woff") format("woff"),
+    url("fonts/Roboto-MediumItalic.ba99bfb0056b.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-LightItalic.9834d9e4dc97.eot");
+  src: local("Roboto Light Italic"), local("Roboto-LightItalic"),
+    url("fonts/Roboto-LightItalic.9834d9e4dc97.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-LightItalic.1c89359e5bc9.woff2") format("woff2"),
+    url("fonts/Roboto-LightItalic.15bc22cde1dd.woff") format("woff"),
+    url("fonts/Roboto-LightItalic.345c42636fc4.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Bold.ccb442b0ad2d.eot");
+  src: local("Roboto Bold"), local("Roboto-Bold"),
+    url("fonts/Roboto-Bold.ccb442b0ad2d.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-Bold.528a8203975e.woff2") format("woff2"),
+    url("fonts/Roboto-Bold.d48b812db365.woff") format("woff"),
+    url("fonts/Roboto-Bold.eb8d0892b2bc.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Medium.abc126cd2540.eot");
+  src: local("Roboto Medium"), local("Roboto-Medium"),
+    url("fonts/Roboto-Medium.abc126cd2540.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-Medium.434bb9e29238.woff2") format("woff2"),
+    url("fonts/Roboto-Medium.84980e6ea302.woff") format("woff"),
+    url("fonts/Roboto-Medium.ae016b89dbb0.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Italic.6d4c37f7a0df.eot");
+  src: local("Roboto Italic"), local("Roboto-Italic"),
+    url("fonts/Roboto-Italic.6d4c37f7a0df.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-Italic.3fdf9ff364dc.woff2") format("woff2"),
+    url("fonts/Roboto-Italic.da62fe971efb.woff") format("woff"),
+    url("fonts/Roboto-Italic.d1acc3c64824.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-BoldItalic.1f225800f7f3.eot");
+  src: local("Roboto Bold Italic"), local("Roboto-BoldItalic"),
+    url("fonts/Roboto-BoldItalic.1f225800f7f3.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-BoldItalic.60f0da3a1ae3.woff2") format("woff2"),
+    url("fonts/Roboto-BoldItalic.1bf7931d38d6.woff") format("woff"),
+    url("fonts/Roboto-BoldItalic.325d677ed17a.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-BlackItalic.d73cd6a5915f.eot");
+  src: local("Roboto Black Italic"), local("Roboto-BlackItalic"),
+    url("fonts/Roboto-BlackItalic.d73cd6a5915f.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-BlackItalic.9d80e986077f.woff2") format("woff2"),
+    url("fonts/Roboto-BlackItalic.77de1d73a583.woff") format("woff"),
+    url("fonts/Roboto-BlackItalic.a68111e8aaa6.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Black.f8248174b46d.eot");
+  src: local("Roboto Black"), local("Roboto-Black"),
+    url("fonts/Roboto-Black.f8248174b46d.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-Black.8a35495ccc28.woff2") format("woff2"),
+    url("fonts/Roboto-Black.0346a95a0cf2.woff") format("woff"),
+    url("fonts/Roboto-Black.8dd9eb8b5635.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-ThinItalic.9d36152a8695.eot");
+  src: local("Roboto Thin Italic"), local("Roboto-ThinItalic"),
+    url("fonts/Roboto-ThinItalic.9d36152a8695.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-ThinItalic.95556eb3ff32.woff2") format("woff2"),
+    url("fonts/Roboto-ThinItalic.f344785ef138.woff") format("woff"),
+    url("fonts/Roboto-ThinItalic.95b3a8c4f285.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Light.7215c4b44f80.eot");
+  src: local("Roboto Light"), local("Roboto-Light"),
+    url("fonts/Roboto-Light.7215c4b44f80.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Roboto-Light.3ff6cf8a124d.woff2") format("woff2"),
+    url("fonts/Roboto-Light.31e78f5bb4bf.woff") format("woff"),
+    url("fonts/Roboto-Light.965d122552f4.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}

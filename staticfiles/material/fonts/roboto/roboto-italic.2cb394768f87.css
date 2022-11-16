@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url("fonts/Roboto-Italic.6d4c37f7a0df.eot");
+    src: local('Roboto Italic'), local('Roboto-Italic'),
+        url("fonts/Roboto-Italic.6d4c37f7a0df.eot?#iefix") format('embedded-opentype'),
+        url("fonts/Roboto-Italic.3fdf9ff364dc.woff2") format('woff2'),
+        url("fonts/Roboto-Italic.da62fe971efb.woff") format('woff'),
+        url("fonts/Roboto-Italic.d1acc3c64824.ttf") format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
