@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf import settings # new
+from django.conf.urls.static import static # new
 
 
 urlpatterns = [
@@ -26,4 +28,6 @@ urlpatterns = [
     path('vehicle/',include('vehicle.urls')),
     path('',include('home.urls')),
     path('report/',include('report.urls'))
-]
+] + static(
+settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+) # new

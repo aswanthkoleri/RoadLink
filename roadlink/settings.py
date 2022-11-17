@@ -138,7 +138,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage" #new
 
 MEDIA_URL = 'roadlink/media/'
-
 MEDIA_ROOT = os.path.join(BASE_DIR,'roadlink/media')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
