@@ -35,4 +35,5 @@ wrapt==1.14.1
 wagtail
 whitenoise
 django-weasyprint
+django-storages[dropbox]
 
