@@ -25,7 +25,7 @@ SECRET_KEY = 'c7#-5a82#$p11h1itg3(e9591bms*)1$9x+#ed5%5pip6psm)&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -55,6 +55,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', #new da mettere sempre subito dopo Security Middelware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,9 +133,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static')] # new
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage" #new
 
 MEDIA_URL = 'roadlink/media/'
-
 MEDIA_ROOT = os.path.join(BASE_DIR,'roadlink/media')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

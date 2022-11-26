@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url("fonts/Roboto-Black.f8248174b46d.eot");
+    src: local('Roboto Black'), local('Roboto-Black'),
+        url("fonts/Roboto-Black.f8248174b46d.eot?#iefix") format('embedded-opentype'),
+        url("fonts/Roboto-Black.8a35495ccc28.woff2") format('woff2'),
+        url("fonts/Roboto-Black.0346a95a0cf2.woff") format('woff'),
+        url("fonts/Roboto-Black.8dd9eb8b5635.ttf") format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
